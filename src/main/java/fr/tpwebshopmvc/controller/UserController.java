@@ -18,31 +18,21 @@ public class UserController {
 	@Autowired
 	UserService userService;
 
-	@GetMapping("/test")
+	@GetMapping("/users")
 	public ModelAndView showUsers()
 	{
-		System.out.println("test ");
-		ModelAndView modelAndView = new ModelAndView();
+		System.out.println("users ");
 		List<User> allusers = userService.getAll();
-		modelAndView.setViewName("users");
-	
-		modelAndView.addObject("users",allusers );
-		
-		return modelAndView;
+		return new ModelAndView("users","users",allusers);
 	}
 	
 
-	@GetMapping("/test/t")
+	@GetMapping("/users/login")
 	public ModelAndView filterUser(@RequestParam("login") String login )
 	{
-		System.out.println("test filter ");
-		ModelAndView modelAndView = new ModelAndView();
-		List<User> allusers = userService.getByLoginLike(login);
-		modelAndView.setViewName("users");
-	
-		modelAndView.addObject("users",allusers );
-		
-		return modelAndView;
+		System.out.println("users filter by login ");
+		List<User> usersFiltered = userService.getByLoginLike(login);
+		return new ModelAndView("users","users",usersFiltered);
 	}
 	
 }
