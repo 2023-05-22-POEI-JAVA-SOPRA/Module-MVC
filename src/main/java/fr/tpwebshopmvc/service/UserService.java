@@ -10,7 +10,7 @@ import fr.tpwebshopmvc.repository.UserRepository;
 
 @Service
 public class UserService {
-<<<<<<< HEAD
+
 	
 	@Autowired
 	UserRepository userRepository;
@@ -19,7 +19,10 @@ public class UserService {
 	{
 		return userRepository.findAll();
 	}
+	public List<User> getByLoginLike(String login)
+	{
+		return userRepository.findByLoginContainingIgnoreCase(login);
+	}
+	
 
-=======
->>>>>>> d3142236f5fb2e145ec5f0834923c72f7ae0dc92
 }

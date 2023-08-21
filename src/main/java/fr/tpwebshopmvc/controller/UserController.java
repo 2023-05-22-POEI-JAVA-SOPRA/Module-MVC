@@ -22,8 +22,8 @@ public class UserController {
 	{
 		System.out.println("test ");
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("users");
 		List<User> allusers = userService.getAll();
+		modelAndView.setViewName("users");
 	
 		modelAndView.addObject("users",allusers );
 		

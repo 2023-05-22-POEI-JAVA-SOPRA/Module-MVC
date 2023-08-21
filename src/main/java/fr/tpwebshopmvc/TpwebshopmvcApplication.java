@@ -7,7 +7,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 @SpringBootApplication
 @EnableWebMvc
-@ComponentScan({"fr.tpwebshopmvc.service","fr.tpwebshopmvc.repository","fr.tpwebshopmvc.model"})
+@ComponentScan({"fr.tpwebshopmvc.service","fr.tpwebshopmvc.repository","fr.tpwebshopmvc.model","fr.tpwebshopmvc.controller"})
 public class TpwebshopmvcApplication {
 
 	public static void main(String[] args) {
