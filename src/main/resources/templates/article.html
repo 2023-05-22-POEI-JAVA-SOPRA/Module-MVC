@@ -28,6 +28,7 @@
 					<th colspan="">Brand</th>
 					<th colspan="">Price</th>
 					<th colspan="">Suppr</th>
+					<th colspan="">Modifier</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -37,11 +38,13 @@
 					<td th:text="${article.brand}"></td>
 					<td th:text="${article.price}"></td>
 					<td>
+						<!-- <a href="./delete-article?id=4554">supprimer</a> method à transformer en get-->
 						<form th:action="@{/delete-article}" th:method="post">
 							<input type="hidden" name="id" th:value="${article.idArticle}" />
 							<button type="submit">Supprimer</button>
 						</form>
 					</td>
+					<td><a href="articleEdit.html" th:href="@{/article-edit(id=${article.idArticle})} ">Modifier</a></td>
 				</tr>
 			</tbody>
 		</table>

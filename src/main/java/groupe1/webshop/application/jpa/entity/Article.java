@@ -68,4 +68,10 @@ public class Article {
 		this.price = price;
 	}
 
+	@Override
+	public String toString() {
+		return "Article [idArticle=" + idArticle + ", description=" + description + ", brand=" + brand + ", price="
+				+ price + "]";
+	}
+
 }

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+
+<head>
+	<title>Modification d'un article</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+	<h1>Modification d'un article</h1>
+	<div>
+		<form action="./articleEdit" method="post" th:object="${editedArticle}">
+			<div>
+				<label for="id">Id : </label>
+				<input id="id" disabled="disabled" type="text" name="id" value="Id" th:value="${editedArticle.idArticle}" />
+			</div>
+			<div>
+				<label for="brand">Marque : </label>
+				<input id="brand" type="text" name="brand" value="Marque" th:value="${editedArticle.brand}" />
+				<p th:errors="*{brand}">Erreur de marque</p>
+			</div>
+			<div>
+				<label for="description">Description : </label>
+				<input id="description" type="text" name="description" value="Description" th:value="${editedArticle.description}" />
+				<p th:errors="*{description}">Erreur de marque</p>
+			</div>
+			<div>
+				<label for="price">Prix : </label>
+				<input id="price" type="number" step="0.01" name="price" value="Prix" th:value="${editedArticle.price}" />
+				<p th:errors="*{price}">Erreur de price</p>
+			</div>
+			<div>
+				<input type="submit" value="sauvegarder" />
+			</div>
+		</form>
+	</div>
+</body>
