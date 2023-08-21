@@ -32,21 +32,27 @@
 	<table class="table table-primary">
 		<thead>
 			<tr>
+				<th scope="col"> Id </th>
 				<th scope="col"> Login </th>
 				<th scope="col">Password </th>
+				<th scope="col">Number of connections</th>
 				<th scope="col">Actions </th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr scope="row" th:if="${users.empty}">
-				<td colspan="3"> No Users Available </td>
+				<td colspan="4"> No Users Available </td>
 			</tr>
 			<tr scope="row" th:each="user : ${users}">
+				<td><span th:text="${user.idUser}"> </span></td>
 				<td><span th:text="${user.login}"> </span></td>
 				<td><span th:text="${user.password}"> </span></td>
+				<td><span th:text="${user.connectionNumber}"> </span></td>
 				<td>
-					
-					<a th:href="@{/delete/{user.idUser}}">Delete<i class="fa fa-remove"></i></a>
+					<button class="btn btn-danger">
+						<a class="link-dark" th:href="@{/users/delete(id=${user.idUser})}">Delete</a></button>
+					<button class="btn btn-primary"><a class="link-dark"
+							th:href="@{/users/update(id=${user.idUser})}">Update<a/></button>
 				</td>
 			</tr>
 		</tbody>
