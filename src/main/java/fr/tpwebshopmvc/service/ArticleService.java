@@ -20,6 +20,11 @@ public class ArticleService {
 		return (List<Article>) repository.findAll();
 	}
 	
+	public List<Article> filtre(String filtre)
+	{
+		return repository.findByDescriptionContainingIgnoreCase(filtre);
+	}
+	
 	public Article findById(Integer id) {
 		return repository.findById(id).orElse(null);
 	}

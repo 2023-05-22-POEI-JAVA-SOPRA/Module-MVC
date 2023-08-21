@@ -9,6 +9,50 @@
 
 </head>
 <body>
-Articles
+	<h1>Articles</h1>
+	<br>
+	
+	<a th:href="@{/ajouter-article}" class="link-body-emphasis link-offset-2 link-underline-opacity-25 link-underline-opacity-75-hover">Ajouter un article</a>
+	
+	<br>
+	<br>
+	
+	<form th:action="@{/filtre-articles}" method="get">
+		
+		<label for="filtre"> filtre : </label>
+		
+		<div class="input-group">
+  			<input th:value="${filtre}" type="text" id="filtre" name="filtre" class="form-control" placeholder="Filtre">
+  			<input type="submit" value="rechercher" class="btn btn-outline-secondary">
+		</div>
+		
+	</form>
+	
+	<br>
+	<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Description</th>
+      <th scope="col">Brand</th>
+      <th scope="col">Unitary Price</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+      
+    </tr>
+  </thead>
+  <tbody th:each="article : ${articles}">
+    <tr>
+      <td th:text="${article.description}">Mark</td>
+      <td th:text="${article.brand}">Brand</td>
+      <td th:text="${article.unitaryPrice}">Price</td>
+      <th><a th:href="@{/put-article/} + ${article.idArticle}">Modifier</a></th>
+      <th><a th:href="@{/article/} + ${article.idArticle}">Delete</a></th>
+    </tr>
+    <tr>
+		
+  </tbody>
+</table>
+
+
 </body>
 </html>
