@@ -1,23 +1,52 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org/" >
+<html xmlns:th="http://www.thymeleaf.org/">
 <html>
-<head>
-<meta charset="UTF-8">
-<title>Mes articles BABIBU</title>
-</head>
-<body>
-	
-	
-<h1>Mes articles :</h1>
 
-	<ul>
-		<li th:each="article:${maListeArticle}" 
-		><a href="article.html" 
-		
-		th:text="${article.brand}"
-		>no article name</a></li>
-		<!--Le th:href qui casse tout, je n'arrive pas a faire la suite-->
-		<!--th:href="@{/planetes/(id=${planetTemp.id})}"-->
-	</ul>
+<head>
+	<meta charset="UTF-8">
+	<title>Mes articles BABIBU</title>
+</head>
+
+<body>
+
+
+	<h1>Mes articles :</h1>
+	<div>
+		<form action="./article" method="POST">
+			<div>
+				<input id="recherche" name="recherche" type="text" placeholder="Rechercher" />
+				<input for="Rechercher" type="submit" />
+			</div>
+		</form>
+	</div>
+	<div>
+		<table>
+			<thead>
+				<tr>
+					<th colspan="">Id</th>
+					<th colspan="">Description</th>
+					<th colspan="">Brand</th>
+					<th colspan="">Price</th>
+					<th colspan="">Suppr</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="article:${maListeArticle}">
+					<td th:text="${article.idArticle}"></td>
+					<td th:text="${article.description}"></td>
+					<td th:text="${article.brand}"></td>
+					<td th:text="${article.price}"></td>
+					<td>
+						<form th:action="@{/delete-article}" th:method="post">
+							<input type="hidden" name="id" th:value="${article.idArticle}" />
+							<button type="submit">Supprimer</button>
+						</form>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
 </body>
+
 </html>
