@@ -32,6 +32,8 @@
 					<li th:each="err : ${#fields.errors('*')}" th:text="${err}">Erreur</li>
 				</ul>
 			</form>
+			<a class="link-dark" th:href="@{/users}"> <button class="btn btn-success">
+						Cancel</button></a>
 	</div>
 </body>
 

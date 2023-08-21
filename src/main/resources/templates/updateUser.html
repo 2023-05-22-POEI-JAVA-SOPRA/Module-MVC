@@ -28,12 +28,15 @@
 				<input id="connectionNumber" name="connectionNumber" type="text" th:value="${user.connectionNumber}" />
 				<br>
 				<input type="submit" th:value="Save" />
+				
 			</div>
 			<div th:if="!${user}">User not found</div>
 			<ul th:if="${#fields.hasErrors('*')}">
 				<li th:each="err : ${#fields.errors('*')}" th:text="${err}">Erreur</li>
 			</ul>
 		</form>
+		<a class="link-dark" th:href="@{/users}"> <button class="btn btn-success">
+						Cancel</button></a>
 	</div>
 </body>
 
