@@ -2,6 +2,7 @@ package fr.tpwebshopmvc.service;
 
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,10 +20,23 @@ public class UserService {
 	{
 		return userRepository.findAll();
 	}
+	public User getById(Integer id)
+	{
+		return userRepository.findById(id).orElse(null);
+	}
 	public List<User> getByLoginLike(String login)
 	{
 		return userRepository.findByLoginContainingIgnoreCase(login);
 	}
 	
-
+	public void deleteById(Integer id)
+	{
+		 userRepository.deleteById(id);
+	}
+	
+	public void saveUser(User user)
+	{
+		userRepository.save(user);
+	}
+	
 }
