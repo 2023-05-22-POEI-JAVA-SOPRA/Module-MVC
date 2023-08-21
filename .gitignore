@@ -31,3 +31,8 @@ build/
 
 ### VS Code ###
 .vscode/
+bin/pom.xml
+bin/src/main/java/groupe1/webshop/application/Application.class
+bin/src/main/resources/application.properties
+bin/src/test/java/groupe1/webshop/application/ApplicationTests.class
+src/main/resources/application.properties
