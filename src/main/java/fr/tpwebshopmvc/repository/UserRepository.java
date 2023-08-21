@@ -9,7 +9,7 @@ import fr.tpwebshopmvc.model.User;
 
 public interface UserRepository extends CrudRepository<User, Integer> {
 
-	public List<User> findAll();
+	
 
 	public Optional<User> findById(Integer id);
 

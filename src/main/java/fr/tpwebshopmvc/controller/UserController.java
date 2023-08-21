@@ -1,7 +1,5 @@
 package fr.tpwebshopmvc.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -25,21 +23,21 @@ public class UserController {
 	@GetMapping("/users")
 	public ModelAndView showUsers() {
 		System.out.println("users ");
-		List<User> allusers = userService.getAll();
+		Iterable<User> allusers = userService.getAll();
 		return new ModelAndView("users", "users", allusers);
 	}
 
 	@GetMapping("/users/search") // http://localhost:8080/tpwebshopmvc/users/search?searchByLogin=rip
 	public ModelAndView filterUserRequestParam(@RequestParam("searchByLogin") String login) {
 		System.out.println("users filter by login ");
-		List<User> usersFiltered = userService.getByLoginLike(login);
+		Iterable<User> usersFiltered = userService.getByLoginLike(login);
 		return new ModelAndView("users", "users", usersFiltered);
 	}
 
 	@GetMapping("/users/search/{searchByLogin}") // http://localhost:8080/tpwebshopmvc/users/search/rip
 	public ModelAndView filterUserPathParam(@PathVariable("searchByLogin") String login) {
 		System.out.println("users filter by login ");
-		List<User> usersFiltered = userService.getByLoginLike(login);
+		Iterable<User> usersFiltered = userService.getByLoginLike(login);
 		return new ModelAndView("users", "users", usersFiltered);
 	}
 
@@ -53,8 +51,33 @@ public class UserController {
 	@GetMapping("/users/update")
 	public ModelAndView getUser(@RequestParam("id") Integer id) {
 		System.out.println("get users by id : " + id);
-		User user = userService.getById(id);
-		return new ModelAndView("addUser", "user", user);
+		 User userInDb = userService.getById(id);
+		return new ModelAndView("updateUser", "user", userInDb);
+	}
+
+	@GetMapping("/users/create")
+	public ModelAndView showFormUser() {
+		User emptyUser = new User();
+		return new ModelAndView("addUser","user",emptyUser);
+	}
+
+	@PostMapping("/users/updateUser")
+	public ModelAndView update(@Validated @ModelAttribute("user") User user, BindingResult bindingResult) {
+		System.out.println("update user : " + user);
+		// User user = userService.getById(id);
+		if (bindingResult.hasErrors()) {
+			System.out.println("Erreur dans l'update  de l'user");
+			ModelAndView mv = new ModelAndView();
+			mv.addObject("user", user);
+			mv.setViewName("updateUser");
+			mv.addObject("errorString", "Erreur dans la sauvegarde de l'utilisateur");
+			return mv;
+		} else {
+			userService.updateUser(user);
+			System.out.println("User with id " + user.getIdUser() + " updated");
+		}
+		return new ModelAndView("redirect:/users");
+
 	}
 
 	@PostMapping("/users/saveUser")
@@ -66,8 +89,9 @@ public class UserController {
 			mv.addObject("user", user);
 			mv.setViewName("addUser");
 			mv.addObject("errorString", "Erreur dans la sauvegarde de l'utilisateur");
-			return new ModelAndView("addUser", "user", user);
+			return mv;
 		} else {
+			System.out.println("Save user");
 			userService.saveUser(user);
 		}
 		return new ModelAndView("redirect:/users");

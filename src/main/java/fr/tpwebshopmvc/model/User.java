@@ -8,7 +8,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 import jakarta.persistence.Table;
-
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PositiveOrZero;
 import jakarta.validation.constraints.Size;
@@ -18,12 +18,14 @@ import jakarta.validation.constraints.Size;
 public class User {
 
 	@Id
+//	@NotNull(message = "Id ne doit pas être null")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)	
  @Column(name = "iduser")
 	private Integer idUser;
 
 	@Size(max = 20)
 	@NotNull
+	@Email
 	private String login;
 	@NotNull
 	@Size(max = 20)
@@ -48,7 +50,7 @@ public class User {
 		this.login = login;
 		this.password = password;
 		this.connectionNumber = connectionNumber;
-		//this.roles = roles;
+
 	}
 
 //	public void setRoles(List<Role> roles) {
