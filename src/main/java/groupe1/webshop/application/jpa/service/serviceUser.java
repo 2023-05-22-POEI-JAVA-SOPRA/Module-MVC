@@ -16,8 +16,16 @@ public class serviceUser {
 	private UserDao monUserDao;
 	
 	public List<User> getAll(){
-		return (List<User>) this.monUserDao.findAll();
+		return this.monUserDao.findAll();
 	}
+	
+	public List<User> getByLoginContainingIgnoreCase(String login){
+		if (login == null) {
+			return getAll();
+		}
+		return this.monUserDao.findByLoginContainingIgnoreCase(login);
+	}
+	
 	
 	public Optional<User> getById(Integer id) {
 		return this.monUserDao.findById(id);
@@ -29,9 +37,5 @@ public class serviceUser {
 	
 	public void deleteById(Integer id) {
 		this.monUserDao.deleteById(id);
-	}
-	
-	public List<User> getByLoginAndPassword(String login, String password){
-		return this.monUserDao.findByLoginAndPassword(login, password);
 	}
 }
