@@ -24,5 +24,9 @@ public class UserService {
 		return userRepository.findByLoginContainingIgnoreCase(login);
 	}
 	
-
+	public void deleteById(Integer id)
+	{
+		 userRepository.deleteById(id);
+	}
+	
 }

@@ -12,4 +12,6 @@ public interface UserRepository extends CrudRepository<User, Integer> {
 	public List<User> findAll();
 	
 	public List<User> findByLoginContainingIgnoreCase(String login);
+
+	public void deleteById(Integer id);
 }
