@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Role update form</title>
+</head>
+
+<body>
+	<div class="container-fluid">
+		<h1> Role update form</h1>
+		<form method="post" action="roles" th:action="@{/roles/updateRole}" th:object="${role}">
+
+			<div th:if="${role}">
+				<input hidden type="text" id="id" name="id" th:value="${role.id}" />
+				<label for="roleName"> Role : </label>
+				<input id="roleName" name="roleName" type="text" th:value="${role.roleName}" />
+				<br>
+				<input type="submit" th:value="Save" />
+			</div>
+			<div th:if="!${role}">Role not found</div>
+			<ul th:if="${#fields.hasErrors('*')}">
+				<li th:each="err : ${#fields.errors('*')}" th:text="${err}">Erreur</li>
+			</ul>
+		</form>
+	</div>
+</body>
+
+</html>

@@ -9,6 +9,8 @@ import java.util.List;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name = "T_Roles")
@@ -18,7 +20,9 @@ public class Role {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "idrole")
 	private Integer id;
-
+	@Column(name = "rolename")
+	@Size(max = 20)
+	@NotEmpty(message = "Role name can't be null or empty")
 	private String roleName;
 
 	public Integer getId() {

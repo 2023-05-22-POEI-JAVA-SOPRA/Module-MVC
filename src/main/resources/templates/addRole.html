@@ -9,6 +9,20 @@
 
 </head>
 <body>
+	<div class="container-fluid">
+		<h1> Role create form </h1>
+			<form method="post" action="roles" th:action="@{/roles/saveRole}" th:object="${role}">
 
+				<div>
+					<label for="roleName"> Role : </label>
+					<input id="roleName" name="roleName" type="text"  th:value="${role.roleName}" />
+					<br>
+					<input type="submit" th:value="Save" />
+				</div>
+				<ul th:if="${#fields.hasErrors('*')}">
+					<li th:each="err : ${#fields.errors('*')}" th:text="${err}">Erreur</li>
+				</ul>
+			</form>
+	</div>
 </body>
 </html>
