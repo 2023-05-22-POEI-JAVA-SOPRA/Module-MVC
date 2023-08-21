@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Articles</title>
+</head>
+<body>
+	
+	<form th:object="${article}" th:action="@{/webshop/article/search}">
+		<input type="text" name="partDescription" id="partDescription" th:value="${partDescription}"/>
+        <input type="submit" value="Search"/>
+        <table th:unless="${#lists.isEmpty(partDescription)}">
+		  <thead>
+		    <tr>
+		      <th>Id</th>
+		      <th>Description</th>
+		      <th>Marque</th>
+		      <th>Prix</th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		    <tr th:each="article : ${articles}">
+		      <td th:text="${article.idArticle}">id</td>
+		      <td th:text="${article.description}">description</td>
+		      <td th:text="${article.brand}">brand</td>
+		      <td th:text="${article.unitaryPrice}">unitaryPrice</td>
+	    	</tr>
+  		</tbody>
+	  </table>
+	</form>
+	
+	<table th:if="${#lists.isEmpty(partDescription)}">
+	  <thead>
+	    <tr>
+	      <th>Id</th>
+	      <th>Description</th>
+	      <th>Marque</th>
+	      <th>Prix</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	    <tr th:each="article : ${articles}">
+	      <td th:text="${article.idArticle}">id</td>
+	      <td th:text="${article.description}">description</td>
+	      <td th:text="${article.brand}">brand</td>
+		  <td th:text="${article.unitaryPrice}">unitaryPrice</td>
+	    </tr>
+	  </tbody>
+	</table>
+	
+</body>
+</html>

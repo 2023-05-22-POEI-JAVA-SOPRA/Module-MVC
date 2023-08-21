@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Users</title>
+</head>
+<body>
+	
+	<form th:object="${user}" th:action="@{/webshop/user/search}">
+		<input type="text" name="partLogin" id="partLogin" th:value="${partLogin}"/>
+        <input type="submit" value="Search"/>
+        <table th:unless="${#lists.isEmpty(partLogin)}">
+		  <thead>
+		    <tr>
+		      <th>Id</th>
+		      <th>Identifiant</th>
+		      <th>Mot de passe</th>
+		      <th>Numéro connexion</th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		    <tr th:each="user : ${users}">
+		      <td th:text="${user.idUser}">id</td>
+		      <td th:text="${user.login}">login</td>
+		      <td th:text="${user.password}">password</td>
+	     	  <td th:text="${user.connectionNumber}">connexionNumber</td>
+	     	  <td></td>
+	    	</tr>
+  		</tbody>
+	  </table>
+	</form>
+	
+	<table th:if="${#lists.isEmpty(partLogin)}">
+	  <thead>
+	    <tr>
+	      <th>Id</th>
+	      <th>Identifiant</th>
+	      <th>Mot de passe</th>
+	      <th>Numéro connexion</th>
+		  <th colspan="2">Actions</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	    <tr th:each="user : ${users}">
+	      <td th:text="${user.idUser}">id</td>
+	      <td th:text="${user.login}">login</td>
+	      <td th:text="${user.password}">password</td>
+	      <td th:text="${user.connectionNumber}">connexionNumber</td>
+	      <td>
+			<form th:object="${user}" th:action="@{/webshop/user/delete}" method="post">
+				<input type="submit" th:field="${user.idUser}" value="supprimer"/>
+			</form>
+	      </td>
+	      <td>
+			<input type="submit" value="modifier"/>
+	      </td>
+	    </tr>
+	  </tbody>
+	</table>
+
+</body>
+</html>

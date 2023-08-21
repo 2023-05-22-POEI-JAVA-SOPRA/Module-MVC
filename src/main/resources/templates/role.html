@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Roles</title>
+</head>
+<body>
+	<form th:object="${role}" th:action="@{/webshop/role/search}">
+		<input type="text" name="partName" id="partName" th:value="${partName}"/>
+        <input type="submit" value="Search"/>
+        <table th:unless="${#lists.isEmpty(partName)}">
+		  <thead>
+		    <tr>
+		      <th>Id</th>
+		      <th>Nom</th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		    <tr th:each="role : ${roles}">
+		      <td th:text="${role.idRole}">id</td>
+		      <td th:text="${role.name}">name</td>
+	    	</tr>
+  		</tbody>
+	  </table>
+	</form>
+	
+	<table th:if="${#lists.isEmpty(partName)}">
+	  <thead>
+	    <tr>
+	      <th>Id</th>
+	      <th>Nom</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	    <tr th:each="role : ${roles}">
+	      <td th:text="${role.idRole}">id</td>
+	      <td th:text="${role.name}">name</td>
+	    </tr>
+	  </tbody>
+	</table>
+
+</body>
+</html>
