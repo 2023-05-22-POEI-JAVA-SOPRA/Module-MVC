@@ -1,13 +1,14 @@
 package fr.tpwebshopmvc.model;
 
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.Email;
+
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PositiveOrZero;
 import jakarta.validation.constraints.Size;
@@ -17,19 +18,19 @@ import jakarta.validation.constraints.Size;
 public class User {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-
+	@GeneratedValue(strategy = GenerationType.IDENTITY)	
+ @Column(name = "iduser")
 	private Integer idUser;
 
 	@Size(max = 20)
 	@NotNull
-	
 	private String login;
 	@NotNull
 	@Size(max = 20)
 	private String password;
 	@NotNull
 	@PositiveOrZero
+	@Column(name = "connectionnumber")
 	private Integer connectionNumber;
 
 //	@ManyToMany
