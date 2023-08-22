@@ -63,6 +63,15 @@ public class UserController {
 		return mav;
 	}
 
+	@GetMapping("/user-create")
+	public ModelAndView afficheSaveUser() {
+		ModelAndView mav = new ModelAndView();
+		User user = new User();
+		mav.setViewName("userCreate");
+		mav.addObject("savedUser", user);
+		return mav;
+	}
+	
 	@PostMapping("/user-create")
 	public ModelAndView saveUser(@Validated @ModelAttribute("savedUser") User user, BindingResult bindingResult) {
 		if (bindingResult.hasErrors()) {
