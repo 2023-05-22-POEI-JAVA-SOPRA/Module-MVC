@@ -1,14 +1,61 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+<head>
+	<meta charset="UTF-8">
+	<title>Role index</title>
+
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
 
 </head>
+
 <body>
-Roles
+	<div class="container-fluid">
+
+
+		<h1>Role list</h1>
+		<ul>
+			<li th:each="role : ${roles}">
+
+				<p th:text="${role.roleName}"></p>
+			</li>
+		</ul>
+		<form method="get" action="role" th:action="@{/roles/search}" th:object="${roles}">
+			<div class="input-group mb-3 w-25 ">
+				<input type="text" name="searchByRoleName" th:value="${searchByRoleName}" class="form-control"
+					placeholder="Role name" aria-label="User's Login" aria-describedby="button-addon2">
+				<button class="btn btn-outline-secondary" type="submit">Search</button>
+		</form>
+
+	</div>
+	<table class="table table-primary">
+		<thead>
+			<tr>
+				<th scope="col"> Id </th>
+				<th scope="col"> Role name </th>
+				<th scope="col">Actions </th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr scope="row" th:if="${roles.empty}">
+				<td colspan="4"> No Users Available </td>
+			</tr>
+			<tr scope="row" th:each="role : ${roles}">
+				<td><span th:text="${role.id}"> </span></td>
+				<td><span th:text="${role.roleName}"> </span></td>
+				<td>
+					<a class="link-dark" th:href="@{/roles/delete(id=${role.id})}"><button
+							class="btn btn-danger">Delete</button></a>
+					<a th:href="@{/roles/update(id=${role.id})}"><button class="btn btn-primary">Update</button><a />
+				</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<a class="link-dark" th:href="@{/roles/create}"> <button class="btn btn-success">Create a role</button></a>
+
+	</div>
 </body>
+
 </html>
