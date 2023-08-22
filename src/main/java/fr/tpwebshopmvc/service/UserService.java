@@ -1,5 +1,7 @@
 package fr.tpwebshopmvc.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,7 +15,7 @@ public class UserService {
 	@Autowired
 	UserRepository userRepository;
 	
-	public Iterable<User> getAll()
+	public List<User> getAll()
 	{
 		return userRepository.findAll();
 	}
@@ -21,7 +23,7 @@ public class UserService {
 	{
 		return userRepository.findById(id).orElse(null);
 	}
-	public Iterable<User> getByLoginLike(String login)
+	public List<User> getByLoginLike(String login)
 	{
 		return userRepository.findByLoginContainingIgnoreCase(login);
 	}

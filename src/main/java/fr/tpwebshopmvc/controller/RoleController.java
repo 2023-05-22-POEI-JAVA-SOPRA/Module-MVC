@@ -85,7 +85,7 @@ public class RoleController {
 
 	
 	@GetMapping("/roles/delete") // http://localhost:8080/tpwebshopmvc/roles/delete?id=1
-	public ModelAndView deleteUser(@RequestParam("id") Integer id) {
+	public ModelAndView deleteRole(@RequestParam("id") Integer id) {
 		System.out.println("roles delete by id : " + id);
 		roleService.deleteById(id);
 		return new ModelAndView("redirect:/roles");

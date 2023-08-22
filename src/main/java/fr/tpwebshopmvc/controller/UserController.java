@@ -1,5 +1,7 @@
 package fr.tpwebshopmvc.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -23,21 +25,21 @@ public class UserController {
 	@GetMapping("/users")
 	public ModelAndView showUsers() {
 		System.out.println("users ");
-		Iterable<User> allusers = userService.getAll();
+		List<User> allusers = userService.getAll();
 		return new ModelAndView("users", "users", allusers);
 	}
 
 	@GetMapping("/users/search") // http://localhost:8080/tpwebshopmvc/users/search?searchByLogin=rip
 	public ModelAndView filterUserRequestParam(@RequestParam("searchByLogin") String login) {
 		System.out.println("users filter by login ");
-		Iterable<User> usersFiltered = userService.getByLoginLike(login);
+		List<User> usersFiltered = userService.getByLoginLike(login);
 		return new ModelAndView("users", "users", usersFiltered);
 	}
 
 	@GetMapping("/users/search/{searchByLogin}") // http://localhost:8080/tpwebshopmvc/users/search/rip
 	public ModelAndView filterUserPathParam(@PathVariable("searchByLogin") String login) {
 		System.out.println("users filter by login ");
-		Iterable<User> usersFiltered = userService.getByLoginLike(login);
+		List<User> usersFiltered = userService.getByLoginLike(login);
 		return new ModelAndView("users", "users", usersFiltered);
 	}
 

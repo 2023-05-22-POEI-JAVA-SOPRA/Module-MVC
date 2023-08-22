@@ -16,8 +16,8 @@
 			<form method="post" action="users" th:action="@{/users/saveUser}" th:object="${user}">
 
 				<div>
-					<label for="name"> Login : </label>
-					<input id="name" name="login" type="email"  th:value="${user.login}" />
+					<label for="login"> Login : </label>
+					<input id="login" name="login" type="email"  th:value="${user.login}" />
 					<br>
 					<label for="password"> Password </label>
 					<input id="password" name="password" type="text" th:value="${user.password}" />
