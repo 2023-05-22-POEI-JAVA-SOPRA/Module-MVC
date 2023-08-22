@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>La page d'un article</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+	<div>C'est la page du article</div>
+	<div th:text="${errorString}">Erreur</div>
+	<form action="./article" method="POST">
+		<div>
+			<label for="id">Id:</label>
+			<input id="id" type="text" name="id" value="45" th:value="${article.id}" />
+		</div>
+		<div>
+			<label for="article">description:</label>
+			<input id="description" type="text" name="description" value="good" th:value="${article.description}" />
+		</div>
+		<div>
+			<label for="article">brand:</label>
+			<input id="brand" type="text" name="brand" value="apple" th:value="${article.brand}" />
+		</div>
+		<div>
+			<label for="article">unitaryPrice:</label>
+			<input id="unitaryPrice" type="text" name="unitaryPrice" value="100" th:value="${article.unitaryPrice}" />
+		</div>
+		<div>
+			<input type="submit" value="sauvegarder" />
+		</div>
+		<div>
+			<input type="search" value="recherche" />
+		</div>
+	</form>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>supprimer un  Article !</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+	<h2>supprimer un  Article</h2>
+	<form th:object="${article}" th:action="@{/article}" method="post">
+
+		
+			<div>
+			<input type="hidden" th:field="*{idArticle}" />
+			<label for="description">Description</label>
+			<input type="text" id="description" th:field="*{description}" />
+			<span th:if="${#fields.hasErrors('description')}" th:errors="*{description}" classe="error"></span>
+			<button type="submit">supprimer</button>
+</div>
+			<div>
+			<input type="hidden" th:field="*{idArticle}" />
+			<label for="brand">Brand</label>
+			<input type="text" id="brand" th:field="*{brand}" />
+			<span th:if="${#fields.hasErrors('brand')}" th:errors="*{brand}" classe="error"></span>
+			<button type="submit">supprimer</button>
+</div>			<div>
+			<input type="hidden" th:field="*{idArticle}" />
+			<label for="unitaryPrice">UnitaryPrice</label>
+			<input type="text" id="unitaryPrice" th:field="*{unitaryPrice}" />
+			<span th:if="${#fields.hasErrors('unitaryPrice')}" th:errors="*{unitaryPrice}" classe="error"></span>
+			<button type="submit">supprimer</button>
+</div>
+		
+	</form>
+	<a href="@{/articles}">retour à la liste des articles</a>
+
+
+
+</body>
+</html>
