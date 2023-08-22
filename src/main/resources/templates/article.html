@@ -12,15 +12,20 @@
 
 	<h1>Mes articles :</h1>
 	<div>
-		<form action="./article" method="POST">
+		<form action="/articles" method="POST">
 			<div>
-				<input id="recherche" name="recherche" type="text" placeholder="Rechercher" />
-				<input for="Rechercher" type="submit" />
+				<a th:href="@{/create-article}">Créer un nouvel article</a>
 			</div>
 		</form>
 	</div>
 	<div>
-		<table>
+		<form method="GET" action="/articles?recherche=">
+			<input id="recherche" name="recherche" type="text" placeholder="Rechercher" />
+			<input for="Rechercher" type="submit" />
+		</form>
+	</div>
+	<div>
+		<table border="1">
 			<thead>
 				<tr>
 					<th colspan="">Id</th>

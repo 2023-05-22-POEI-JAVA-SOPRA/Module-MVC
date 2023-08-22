@@ -21,6 +21,11 @@ public class serviceArticle {
 		return this.monArticleDao.findAll();
 	}
 	
+	public Iterable<Article> getByDescr(String descr){
+		System.out.println(descr);
+		return this.monArticleDao.findByDescriptionContainingIgnoreCase(descr);			
+	}
+	
 	public Optional<Article> getById(Integer id) {
 		return this.monArticleDao.findById(id);
 	}
@@ -29,6 +34,7 @@ public class serviceArticle {
 		this.monArticleDao.deleteById(id);
 	}
 	
+	//A supprimer
 	public List<Article> getByDescriptionContainingIgnoreCase(String description){
 		return this.monArticleDao.findByDescriptionContainingIgnoreCase(description);
 	}

@@ -19,19 +19,31 @@ public class ArticleController {
 	@Autowired
 	private serviceArticle artServ;
 
-	// GESTION DE LA PAGE planetes.html
+	// GESTION DE LA PAGE article.html
 	@GetMapping(path = "/articles")
-	public String allArticles() {
+	public ModelAndView searchArticles(@RequestParam(name="recherche",required=false)String descr) {
 		System.out.println("Méthode sur /articles appelée");
-		// return du planetes pour planetes.html (cf. config pour prefix/suffix)
-		return "article";
+		// return des articles pour planetes.html (cf. config pour prefix/suffix)
+		ModelAndView mav=new ModelAndView();
+		mav.setViewName("article");
+		if(descr==null) {
+			System.out.println("descr null");
+			mav.addObject("maListeArticle", artServ.getAll());
+			return mav;
+		}
+		else {	
+			System.out.println("descr panul");
+			mav.addObject("maListeArticle", artServ.getByDescr(descr));
+			return mav;
+		}
 	}
 
-	// Methode appelee lors du chargement de la page planetes.html
-	@ModelAttribute("maListeArticle")
-	public Iterable<Article> maListeArticle() {
-		return artServ.getAll();
-	}
+	// Methode appelee lors du chargement de la page article.html
+//	@ModelAttribute("maListeArticle")
+//	public Iterable<Article> maListeArticle() {
+//		return artServ.getAll();
+//	}
+	
 
 	@PostMapping("/delete-article")
 	public String deleteArticle(Integer id) {
