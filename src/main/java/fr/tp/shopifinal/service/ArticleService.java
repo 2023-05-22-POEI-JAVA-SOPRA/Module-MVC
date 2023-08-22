@@ -1,4 +1,4 @@
-package fr.tp.shopi.service;
+package fr.tp.shopifinal.service;
 
 import java.util.List;
 import java.util.Optional;
@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import fr.tp.shopi.entity.Article;
+import fr.tp.shopifinal.entity.Article;
 
 @Service
 public class ArticleService {
@@ -54,7 +54,7 @@ public class ArticleService {
 	}
 	
 	public List<Article> findByDescriptionContaining(String description){
-		return this.articleDao.findByDescriptionContaining(description);
+		return this.articleDao.findByDescriptionContainingIgnoreCase(description);
 	}
 	
 	public List<Article> findByBrandIgnoreCaseAndUnitaryPriceBetween(String description,float min, float max){

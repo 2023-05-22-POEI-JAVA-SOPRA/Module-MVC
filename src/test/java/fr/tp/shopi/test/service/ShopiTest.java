@@ -6,19 +6,18 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
+
+import fr.tp.shopifinal.ShopiFinalApplication;
+import fr.tp.shopifinal.entity.User;
+import fr.tp.shopifinal.service.ArticleService;
+import fr.tp.shopifinal.service.RoleService;
+import fr.tp.shopifinal.service.UserService;
 
 
-import fr.tp.shopi.entity.User;
-import fr.tp.shopi.service.ArticleService;
-import fr.tp.shopi.service.RoleService;
-import fr.tp.shopi.service.UserService;
-
-
-@SpringBootTest
+@SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT, classes = ShopiFinalApplication.class)
 public class ShopiTest {
-	@Test
-	void contextLoads() {
-	}
+	
 
 	@Autowired
 	private ArticleService articleService;
@@ -30,9 +29,9 @@ public class ShopiTest {
 	
 	@Test
 	public void test_find_user_by_password() {
-		String password = "ndo";
+		String password = "ibery";
 		Iterable<User> listOfUsers = userService.findByPassword(password);
-		assertEquals(4, listOfUsers.iterator().next().getIdUser());
+		assertEquals(3, listOfUsers.iterator().next().getIdUser());
 	}
 	
 	@Test
@@ -43,8 +42,8 @@ public class ShopiTest {
 	
 	@Test
 	public void test_find_user_by_login() {
-		String login = "jo";
-		assertEquals(4, userService.findByLogin(login).get(0).getIdUser());
+		String login = "al";
+		assertEquals(3, userService.findByLogin(login).get(0).getIdUser());
 	}
 	
 	@Test
@@ -55,9 +54,9 @@ public class ShopiTest {
 	
 	@Test
 	public void test_find_user_by_login_password() {
-		String login = "jo";
-		String password ="ndo";
-		assertEquals(4, userService.findByLoginAndPassword(login,password).get(0).getIdUser());
+		String login = "al";
+		String password ="ibery";
+		assertEquals(3, userService.findByLoginAndPassword(login,password).get(0).getIdUser());
 	}
 	
 	@Test

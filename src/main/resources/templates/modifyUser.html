@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Modify User</title>
+</head>
+<body>
+	<form th:action="@{'/users/modify/'+${user.get().idUser}}" th:object="${user}" method="POST">
+		<input type="hidden" name="idUser" th:placeholder="id" th:value ="${user.get().idUser}"></input>
+		<input type="text" name="login" th:placeholder="login" th:value ="${user.get().login}"></input>
+		<input type="text" name="password" th:placeholder="password" th:value ="${user.get().password}"></input>
+		<input type="text" name="connectionNumber" th:placeholder="connectionNumber" th:value ="${user.get().connectionNumber}"></input>
+		<input type="submit" value="Modifier"></input>
+	</form>
+
+</body>
+</html>

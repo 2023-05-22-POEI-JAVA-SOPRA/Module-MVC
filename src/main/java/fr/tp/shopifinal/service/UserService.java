@@ -1,4 +1,4 @@
-package fr.tp.shopi.service;
+package fr.tp.shopifinal.service;
 
 import java.util.List;
 import java.util.Optional;
@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import fr.tp.shopi.entity.User;
+import fr.tp.shopifinal.entity.User;
 
 @Service
 public class UserService {
@@ -56,7 +56,7 @@ public class UserService {
 	}
 	
 	public List<User> findByLogin(String login){
-		return this.userDao.findByLogin(login);
+		return this.userDao.findByLoginIgnoreCase(login);
 	}
 	
 	public List<User> findByLoginAndPassword(String login, String password){

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Modify Role</title>
+</head>
+<body>
+	<form th:action="@{'/roles/modify/'+${role.get().idRole}}" th:object="${role}" method="POST">
+		<input type="hidden" name="idRole" th:placeholder="id" th:value ="${role.get().idRole}"></input>
+		<input type="text" name="name" th:placeholder="name" th:value ="${role.get().name}"></input>
+		<input type="submit" value="Modifier"></input>
+	</form>
+
+</body>
+</html>

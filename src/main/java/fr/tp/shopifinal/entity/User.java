@@ -1,4 +1,4 @@
-package fr.tp.shopi.entity;
+package fr.tp.shopifinal.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

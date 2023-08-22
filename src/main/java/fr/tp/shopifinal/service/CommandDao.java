@@ -1,11 +1,11 @@
-package fr.tp.shopi.service;
+package fr.tp.shopifinal.service;
 
 import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import fr.tp.shopi.entity.Command;
+import fr.tp.shopifinal.entity.Command;
 
 @Repository
 public interface CommandDao extends CrudRepository<Command, Long> {

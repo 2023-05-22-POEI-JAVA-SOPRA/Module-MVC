@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Articles</title>
+</head>
+
+<body>
+	<table cellspacing="20" style="border-spacing: 0 10px;">
+		<thead>
+			<tr>ID</tr>
+			<tr>Description</tr>
+			<tr>Brand</tr>
+			<tr>Unitary Price</tr>
+			<tr>Delete</tr>
+		</thead>
+		<tbody>
+			<tr th:each="article:${articles}">
+				<td th:text="${article.idArticle}"></td>
+				<td th:text="${article.Description}"></td>
+				<td th:text="${article.Brand}"></td>
+				<td th:text="${article.unitaryPrice}"></td>
+				<td>
+					<a th:href="@{'/articles/delete/'+${article.idArticle}}">Supprimer</a>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	</br>
+	</br>
+	<form th:action="@{/articles/search}" method="get">
+		<input type="text" name="description" th:placeholder="Rechercher...">
+		<input type="submit" value="Rechercher">
+	</form>
+	</br>
+	</br>
+	<a th:href="@{'/accueil'}">Retour à la page d'accueil</a>
+
+</body>
+
+</html>

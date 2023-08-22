@@ -1,11 +1,11 @@
-package fr.tp.shopi.service;
+package fr.tp.shopifinal.service;
 
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
-import fr.tp.shopi.entity.Command;
+import fr.tp.shopifinal.entity.Command;
 
 @Service
 public class CommandService {

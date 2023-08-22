@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Shopi: Accueil</title>
+</head>
+
+<body>
+	<h1>WELCOME TO SHOPISHOPISHOPA</h1>
+	<h2><em>shopshopshop chez shopishopishopa sans chavirer et plus besoin de chasser ni chercher!</em></h2>
+	<ul>
+		<li>
+			<a th:href="@{'/users'}" th:text="${'Users list'}"></a>
+		</li>
+		<li>
+			<a th:href="@{'/roles'}" th:text="${'Roles list'}"></a>
+		</li>
+		<li>
+			<a th:href="@{'/articles'}" th:text="${'Articles list'}"></a>
+		</li>
+	</ul>
+
+</body>
+
+</html>

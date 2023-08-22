@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Modify User</title>
+</head>
+<body>
+	<form th:action="@{'/articles/modify/'+${article.get().idArticle}}" th:object="${article}" method="POST">
+		<input type="hidden" name="idArticle" th:placeholder="id" th:value ="${article.get().idArticle}"></input>
+		<input type="text" name="description" th:placeholder="description" th:value ="${article.get().description}"></input>
+		<input type="text" name="brand" th:placeholder="brand" th:value ="${article.get().brand}"></input>
+		<input type="text" name="unitaryPrice" th:placeholder="unitaryPrice" th:value ="${article.get().unitaryPrice}"></input>
+		<input type="submit" value="Modifier"></input>
+	</form>
+
+</body>
+</html>

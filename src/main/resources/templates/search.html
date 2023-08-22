@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Search user by login</title>
+</head>
+
+<body>
+	<h1>Resultat de la recherche :</h1>
+	<div th:if="${not #lists.isEmpty(users)}">
+		<table cellspacing="20" style="border-spacing: 0 10px;">
+			<thead>
+				<tr>ID</tr>
+				<tr>Login</tr>
+				<tr>Password</tr>
+				<tr>number of connection</tr>
+			</thead>
+			<tbody>
+				<tr th:each="user:${users}">
+					<td th:text="${user.idUser}"></td>
+					<td th:text="${user.login}"></td>
+					<td th:text="${user.password}"></td>
+					<td th:text="${user.connectionNumber}"></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+
+
+	<div th:if="${not #lists.isEmpty(roles)}">
+		<table cellspacing="20" style="border-spacing: 0 10px;">
+			<thead>
+				<tr>ID</tr>
+				<tr>Name</tr>
+
+			</thead>
+			<tbody>
+				<tr th:each="role:${roles}">
+					<td th:text="${role.idRole}"></td>
+					<td th:text="${role.name}"></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+
+	<div th:if="${not #lists.isEmpty(articles)}">
+		<table cellspacing="20" style="border-spacing: 0 10px;">
+			<thead>
+				<tr>ID</tr>
+				<tr>Description</tr>
+				<tr>Brand</tr>
+				<tr>Unitary Price</tr>
+
+			</thead>
+			<tbody>
+				<tr th:each="article:${articles}">
+					<td th:text="${article.idArticle}"></td>
+					<td th:text="${article.Description}"></td>
+					<td th:text="${article.Brand}"></td>
+					<td th:text="${article.unitaryPrice}"></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<div th:if="${#lists.isEmpty(users)} and ${#lists.isEmpty(roles)} and ${#lists.isEmpty(articles)}"
+		th:text="${'Desole nous n avons rien trouve!'}"></div>
+
+
+	<br>
+	<a href="javascript:void(0);" onclick="history.back();">Retour à la page de recherche</a>
+</body>
+
+</html>

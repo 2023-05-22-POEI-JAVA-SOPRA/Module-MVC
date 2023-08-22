@@ -1,11 +1,11 @@
-package fr.tp.shopi.service;
+package fr.tp.shopifinal.service;
 
 import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import fr.tp.shopi.entity.Role;
+import fr.tp.shopifinal.entity.Role;
 
 
 @Repository
