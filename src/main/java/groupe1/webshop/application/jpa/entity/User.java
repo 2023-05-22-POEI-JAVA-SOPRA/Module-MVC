@@ -19,7 +19,7 @@ public class User {
 	@Positive(message="L'id doit etre STRICTEMENG positif")
 	private Integer idUser;
 
-	@Email(message="Le login doit etre un email")
+//	@Email(message="Le login doit etre un email")
 	@NotEmpty(message="Le login doit exister (non vide soit 1 car minimum)")
 	@Size(max = 20, message="Le login doit faire 20 caracteres max")
 	@NotNull
