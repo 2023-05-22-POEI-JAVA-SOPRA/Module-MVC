@@ -63,6 +63,7 @@ public class UserController {
 		if (bindingResult.hasErrors()) {
 			mav.addObject("user", user);
 			mav.addObject("editMode", editMode);
+
 			System.out.println("Erreur" + (editMode ? " d'édition" : " de création") + " de l'user, non enregistré !");
 			System.out.println(bindingResult);
 			mav.addObject("errorString",
