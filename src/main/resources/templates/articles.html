@@ -13,6 +13,7 @@
 			<tr>Description</tr>
 			<tr>Brand</tr>
 			<tr>Unitary Price</tr>
+			<tr>Modify</tr>
 			<tr>Delete</tr>
 		</thead>
 		<tbody>
@@ -21,6 +22,9 @@
 				<td th:text="${article.Description}"></td>
 				<td th:text="${article.Brand}"></td>
 				<td th:text="${article.unitaryPrice}"></td>
+				<td>
+					<a th:href="@{'/articles/modify/'+${article.idArticle}}">Modifier</a>
+				</td>
 				<td>
 					<a th:href="@{'/articles/delete/'+${article.idArticle}}">Supprimer</a>
 				</td>

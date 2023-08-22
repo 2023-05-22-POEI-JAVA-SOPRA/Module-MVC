@@ -11,12 +11,16 @@
 		<thead>
 			<tr>ID</tr>
 			<tr>Name</tr>
+			<tr>Modify</tr>
 			<tr>Delete</tr>
 		</thead>
 		<tbody>
 			<tr th:each="role:${roles}">
 				<td th:text="${role.idRole}"></td>
 				<td th:text="${role.name}"></td>
+				<td>
+					<a th:href="@{'/roles/modify/'+${role.idRole}}">Modifier</a>
+				</td>
 				<td>
 					<a th:href="@{'/roles/delete/'+${role.idRole}}">Supprimer</a>
 				</td>

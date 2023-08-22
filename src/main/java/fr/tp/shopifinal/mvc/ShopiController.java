@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import fr.tp.shopifinal.entity.Article;
 import fr.tp.shopifinal.entity.Role;
 import fr.tp.shopifinal.entity.User;
 import fr.tp.shopifinal.service.ArticleService;
@@ -153,6 +154,25 @@ public class ShopiController {
 		mav.setViewName("redirect:/roles");
 		mav.addObject("role", role);
 		roleService.save(role);
+		return mav;
+	}
+	
+	@GetMapping("/articles/modify/{id}")
+	public ModelAndView modifyArticle(@PathVariable String id) {
+		ModelAndView mav = new ModelAndView();
+		System.out.println("modification article...");
+		mav.setViewName("modifyArticle");
+		mav.addObject("article", articleService.findById(Long.parseLong(id)));
+		return mav;
+	}
+
+	@PostMapping("/articles/modify/{id}")
+	public ModelAndView saveModifyArticle(@ModelAttribute("article") Article article) {
+		ModelAndView mav = new ModelAndView();
+		System.out.println("Article modifié!");
+		mav.setViewName("redirect:/articles");
+		mav.addObject("article", article);
+		articleService.save(article);
 		return mav;
 	}
 
