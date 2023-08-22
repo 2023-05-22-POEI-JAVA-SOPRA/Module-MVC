@@ -2,39 +2,46 @@
 <html xmlns:th="http://www.thymeleaf.org" >
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Titre</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css">
+<title>Acceuil Utilisateurs</title>
 </head>
 <body>
-	<h1>Liste des utilisateurs</h1>
+	<h1 class="text-center">Liste des utilisateurs</h1>
 
-	<table>
+		<form method="get" action="./users">
+			<input type="text" name="search" placeholder="Rechercher un login">
+			<button type="submit"  class="btn btn-success">
+	    			<i class="fas fa-search"></i>
+			</button>
+		</form>
+		
+	<table class="table table-dark">
 		<thead>
 			<tr>
-				<th>ID</th>
-				<th>E-mail</th>
-				<th>Mot de passe</th>
-				<th>Numero de connexion</th>
+				<th scope="col">ID</th>
+				<th scope="col">E-mail</th>
+				<th scope="col">Mot de passe</th>
+				<th scope="col">Numero de connexion</th>
 			</tr>
 		</thead>
 		<tbody th:each="userTemp : ${userList}">
 			<tr>
-				<td th:text="${userTemp.id}"></td>
+				<th scope="row" th:text="${userTemp.id}"></th>
 				<td th:text="${userTemp.login}"></td>
 				<td th:text="${userTemp.password}"></td>
 				<td th:text="${userTemp.connectionNumber}"></td>
-				<td><a th:href="@{/user(id=${userTemp.id})}">Modifier</a></td>
-				<td><a th:href="@{/user-delete(id=${userTemp.id})}">Supprimer</a></td>
+				<td>
+					<a th:href="@{/user(id=${userTemp.id})}" class="btn btn-primary"><i class="fas fa-edit"></i> Modifier</a>
+				</td>
+				<td>
+					<a th:href="@{/user-delete(id=${userTemp.id})}" class="btn btn-danger"><i class="fa fa-trash"></i> Supprimer</a>
+				</td>
 			</tr>
 		</tbody>
 	</table>
 	
 	<p th:if="${userList.size &lt; 1}">Aucun utilisateur trouvé</p>
-	
-	<a href="./user-create">Creer</a>
-	
-	<form method="get" action="./users">
-		<input type="text" name="search">
-		<input type="submit" value="Rechercher">
-	</form>
+	<a href="./user-create" class="btn btn-primary"><i class="fa fa-plus"></i> Creer</a>
 </body>
 </html>

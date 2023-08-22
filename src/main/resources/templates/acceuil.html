@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <title>Accueil</title>
 </head>
 <body>
-    <h1>Page d'accueil</h1>
-    <ul>
-        <li><a th:href="@{/users}">Gestion des Utilisateurs</a></li>
-        <li><a th:href="@{/roles}">Gestion des Rôles</a></li>
-        <li><a th:href="@{/articles}">Gestion des Articles</a></li>
-    </ul>
+    <h1 class="text-center">Page d'accueil</h1>
+
+    <div class="list-group">
+		   <a th:href="@{/users}" class="list-group-item list-group-item-action btn">Gestion des Utilisateurs</a>
+        	<a th:href="@{/roles}" class="list-group-item list-group-item-action btn">Gestion des Rôles</a>
+        	<a th:href="@{/articles}" class="list-group-item list-group-item-action btn">Gestion des Articles</a>
+	</div>
+    
+    
 </body>
 </html>
