@@ -62,7 +62,7 @@ public class ArticleController {
 			BindingResult bindingResult) {
 		if (bindingResult.hasErrors()) {
 			ModelAndView mav = new ModelAndView();
-			mav.setViewName("redirect:/articles"); // nom de la vue (page html)
+			mav.setViewName("articleEdit"); // nom de la vue (page html)
 			mav.addObject("editedArticle", article); // nom du mlodel attribute et valeur de l'object
 			System.out.println("Erreur de article, je ne sauvegarde pas.");
 			mav.addObject("errorString", "Erreur dans la article !");
@@ -81,7 +81,7 @@ public class ArticleController {
 		ModelAndView mav = new ModelAndView();
 		Article newArticle = new Article();
 		mav.setViewName("articleCreate");
-		mav.addObject("newArticle", newArticle);
+		mav.addObject("createArticle", newArticle);
 		return mav;
 	}
 	
@@ -91,8 +91,8 @@ public class ArticleController {
 			,BindingResult bindingResult) {
 		if (bindingResult.hasErrors()) {
 			ModelAndView mav = new ModelAndView();
-			mav.setViewName("redirect:/articles"); // nom de la vue (page html)
-			mav.addObject("newArticle", newArticle); // nom du mlodel attribute et valeur de l'object
+			mav.setViewName("articleCreate"); // nom de la vue (page html)
+			mav.addObject("createArticle", newArticle); // nom du mlodel attribute et valeur de l'object
 			System.out.println("Erreur creation article, je ne cree pas.");
 			mav.addObject("errorString", "Erreur dans la creation de l'article !");
 			return mav;
@@ -100,7 +100,7 @@ public class ArticleController {
 		ModelAndView mav = new ModelAndView();
 		artServ.save(newArticle);
 		mav.setViewName("redirect:/articles");
-		mav.addObject("newArticle", newArticle); // nom du model attribute et valeur de l'object
+		mav.addObject("createArticle", newArticle); // nom du model attribute et valeur de l'object
 		return mav;
 
 	}

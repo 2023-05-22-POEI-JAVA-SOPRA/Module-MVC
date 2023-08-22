@@ -14,8 +14,7 @@
 	
 	<form action="/role-create" method="post" th:object="${createRole}">
 			<div>
-				<label for="id">Id : </label>
-				<input id="id" readonly="readonly" type="text"
+				<input id="id" readonly="readonly" type="hidden"
 				name="idRole" value="Id" th:value="${createRole.idRole}" />
 			</div>
 			<div>
