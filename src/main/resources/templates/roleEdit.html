@@ -9,6 +9,9 @@
 <body>
 	<h1>Modification d'un role</h1>
 	<div>
+		
+		 <div th:text="${errorString}">Erreur</div>
+		
 		<!-- action = lien sur lequel on veut aller quand on appuie sur submit-->
 		<form action="/role-edit" method="post" th:object="${editedRole}">
 			<div>

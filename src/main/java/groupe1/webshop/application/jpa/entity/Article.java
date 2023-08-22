@@ -27,7 +27,7 @@ public class Article {
 	private String brand;
 
 	@Column(name="unitaryPrice")
-	@NotNull
+	@NotNull(message="Le prix ne peut pas être nul")
 	private Float price;
 	
 	private static final Double maxPrice = 500.00;

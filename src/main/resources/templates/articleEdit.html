@@ -9,6 +9,9 @@
 <body>
 	<h1>Modification d'un article</h1>
 	<div>
+		
+		 <div th:text="${errorString}">Erreur</div>
+		
 		<!-- action = lien sur lequel on veut aller quand on appuie sur submit-->
 		<form action="/article-edit" method="post" th:object="${editedArticle}">
 			<div>

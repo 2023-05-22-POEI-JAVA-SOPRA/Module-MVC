@@ -22,7 +22,7 @@ public class Role {
 
 	@NotEmpty(message = "L'attribut nom ne peut être vide")
 	@NotNull(message = "L'attribut nom est null")
-	@Size(max = 20, message = "Le nom ne doit pas dépasser 20 caractères")
+	@Size(min=3,max = 20, message = "Le nom ne doit pas dépasser 20 caractères")
 	@Column(name = "roleName")
 	private String name;
 

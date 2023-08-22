@@ -10,6 +10,8 @@
 <body>
 	<h1>Créer un article : </h1>
 	
+	 <div th:text="${errorString}">Erreur</div>
+	
 	<form action="/article-create" method="post" th:object="${newArticle}">
 			<div>
 				<label for="id">Id : </label>

@@ -79,7 +79,7 @@ public class RoleController {
 		ModelAndView mav = new ModelAndView();
 		Role newRole = new Role();
 		mav.setViewName("roleCreate");
-		mav.addObject("newRole", newRole);
+		mav.addObject("createRole", newRole);
 		return mav;
 	}
 	
@@ -89,8 +89,8 @@ public class RoleController {
 			,BindingResult bindingResult) {
 		if (bindingResult.hasErrors()) {
 			ModelAndView mav = new ModelAndView();
-			mav.setViewName("redirect:/roles"); // nom de la vue (page html)
-			mav.addObject("newRole", newRole); // nom du mlodel attribute et valeur de l'object
+			mav.setViewName("roleCreate"); // nom de la vue (page html)
+			mav.addObject("createRole", newRole); // nom du mlodel attribute et valeur de l'object
 			System.out.println("Erreur creation role, je ne cree pas.");
 			mav.addObject("errorString", "Erreur dans la creation du role !");
 			return mav;
@@ -98,7 +98,7 @@ public class RoleController {
 		ModelAndView mav = new ModelAndView();
 		sRole.save(newRole);
 		mav.setViewName("redirect:/roles");
-		mav.addObject("newRole", newRole); // nom du model attribute et valeur de l'object
+		mav.addObject("createRole", newRole); // nom du model attribute et valeur de l'object
 		return mav;
 
 	}
