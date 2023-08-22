@@ -21,8 +21,11 @@ public class serviceArticle {
 		return this.monArticleDao.findAll();
 	}
 	
+	/*
+	 * si descr == null afficher tout les éléments cf. articleController
+	 */
 	public Iterable<Article> getByDescr(String descr){
-		System.out.println(descr);
+		//System.out.println(descr);
 		return this.monArticleDao.findByDescriptionContainingIgnoreCase(descr);			
 	}
 	

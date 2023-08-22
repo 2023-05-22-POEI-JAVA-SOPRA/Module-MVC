@@ -19,7 +19,7 @@ public class ArticleController {
 	@Autowired
 	private serviceArticle artServ;
 
-	// GESTION DE LA PAGE article.html
+	// PAGE article.html
 	@GetMapping(path = "/articles")
 	public ModelAndView searchArticles(@RequestParam(name="recherche",required=false)String descr) {
 		System.out.println("Méthode sur /articles appelée");
@@ -27,7 +27,7 @@ public class ArticleController {
 		ModelAndView mav=new ModelAndView();
 		mav.setViewName("article");
 		if(descr==null) {
-			System.out.println("descr null");
+			//System.out.println("descr null");
 			mav.addObject("maListeArticle", artServ.getAll());
 			return mav;
 		}
@@ -37,12 +37,6 @@ public class ArticleController {
 			return mav;
 		}
 	}
-
-	// Methode appelee lors du chargement de la page article.html
-//	@ModelAttribute("maListeArticle")
-//	public Iterable<Article> maListeArticle() {
-//		return artServ.getAll();
-//	}
 	
 
 	@PostMapping("/delete-article")
@@ -51,6 +45,8 @@ public class ArticleController {
 		System.out.println("on supprime : " + id);
 		return "redirect:/articles"; // Redirection sur la page de base
 	}
+	
+	// PAGE EDIT ARTICLE
 	
 	@GetMapping("/article-edit")
 	public ModelAndView afficheEditArticle(@RequestParam Integer id) {
@@ -78,6 +74,35 @@ public class ArticleController {
 		mav.setViewName("redirect:/articles"); // nom de la vue (page html)
 		mav.addObject("editedArticle", article); // nom du mlodel attribute et valeur de l'object
 		return mav;
+	}
+	
+	@GetMapping("/article-create")
+	public ModelAndView afficheCreateArticle() {
+		ModelAndView mav = new ModelAndView();
+		Article newArticle = new Article();
+		mav.setViewName("articleCreate");
+		mav.addObject("newArticle", newArticle);
+		return mav;
+	}
+	
+	// PAGE CREATE ARTICLE
+	@PostMapping("/article-create")
+	public ModelAndView createArticle(@Validated @ModelAttribute("createArticle") Article newArticle
+			,BindingResult bindingResult) {
+		if (bindingResult.hasErrors()) {
+			ModelAndView mav = new ModelAndView();
+			mav.setViewName("redirect:/articles"); // nom de la vue (page html)
+			mav.addObject("newArticle", newArticle); // nom du mlodel attribute et valeur de l'object
+			System.out.println("Erreur creation article, je ne cree pas.");
+			mav.addObject("errorString", "Erreur dans la creation de l'article !");
+			return mav;
+		}
+		ModelAndView mav = new ModelAndView();
+		artServ.save(newArticle);
+		mav.setViewName("redirect:/articles");
+		mav.addObject("newArticle", newArticle); // nom du model attribute et valeur de l'object
+		return mav;
+
 	}
 
 }

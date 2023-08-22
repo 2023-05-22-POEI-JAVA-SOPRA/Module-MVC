@@ -20,4 +20,5 @@ public interface ArticleDao extends CrudRepository<Article,Integer>{
 	@Query("from Article where LOWER(:marque) = LOWER(brand) AND price BETWEEN :prixMin AND :prixMax")
 	List<Article> findByMarqueAndPrixRange(@Param("marque") String marque, @Param("prixMin") Float prixMin, @Param("prixMax") Float prixMax);
 	
+	
 }

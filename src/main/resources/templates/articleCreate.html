@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Création article</title>
+</head>
+
+<body>
+	<h1>Créer un article : </h1>
+	
+	<form action="/article-create" method="post" th:object="${newArticle}">
+			<div>
+				<label for="id">Id : </label>
+				<input id="id" readonly="readonly" type="text" name="idArticle" value="Id" th:value="${newArticle.idArticle}" />
+			</div>
+			<div>
+				<label for="brand">Marque : </label>
+				<input id="brand" type="text" name="brand" value="Marque" th:value="${newArticle.brand}" />
+				<p th:errors="*{brand}">Erreur de marque</p>
+			</div>
+			<div>
+				<label for="description">Description : </label>
+				<input id="description" type="text" name="description" value="Description" th:value="${newArticle.description}" />
+				<p th:errors="*{description}">Erreur de marque</p>
+			</div>
+			<div>
+				<label for="price">Prix : </label>
+				<input id="price" type="number" step="0.01" name="price" value="Prix" th:value="${newArticle.price}" />
+				<p th:errors="*{price}">Erreur de price</p>
+			</div>
+			<div>
+				<input type="submit" value="sauvegarder" />
+				<a href="/articles">Annuler</a>
+			</div>
+		</form>
+
+	
+
+</body>
+
+</html>

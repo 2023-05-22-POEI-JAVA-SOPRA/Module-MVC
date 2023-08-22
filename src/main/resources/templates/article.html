@@ -12,13 +12,6 @@
 
 	<h1>Mes articles :</h1>
 	<div>
-		<form action="/articles" method="POST">
-			<div>
-				<a th:href="@{/create-article}">Créer un nouvel article</a>
-			</div>
-		</form>
-	</div>
-	<div>
 		<form method="GET" action="/articles?recherche=">
 			<input id="recherche" name="recherche" type="text" placeholder="Rechercher" />
 			<input for="Rechercher" type="submit" />
@@ -49,10 +42,17 @@
 							<button type="submit">Supprimer</button>
 						</form>
 					</td>
-					<td><a href="articleEdit.html" th:href="@{/article-edit(id=${article.idArticle})} ">Modifier</a></td>
+					<td><a href="articleEdit.html" th:href="@{/article-edit(id=${article.idArticle})} ">Modifier</a>
+					</td>
 				</tr>
 			</tbody>
 		</table>
+
+		<h2>Créer un article : </h2>
+		<div>
+			<p><a th:href="@{/article-create}">
+					Créer un nouvel article</a></p>
+		</div>
 	</div>
 
 </body>
