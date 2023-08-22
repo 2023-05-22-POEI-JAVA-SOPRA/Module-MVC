@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Modifier un rôle</title>
+</head>
+<body>
+	
+	<div th:text="${errorString}">Erreur</div>
+
+	<p>
+		<form action="/webshop/role/save" method="POST" th:object="${role}">
+			<label for="idRole">Id : </label><input id="idRole" type="number" name="idRole" th:value="${role.idRole}"/>
+			<p th:errors="*{idRole}">Erreur id</p>
+			<label for="name">Nom : </label><input id="name" type="text" name="name" th:value="${role.name}"/>
+			<p th:errors="*{name}">Erreur nom</p>
+			<input type="submit" value="Sauvegarder">
+			<a href="/webshop/role" th:href="@{/webshop/role}" th:text="annuler">annuler</a>
+		</form>
+		
+	</p>
+</body>
+</html>

@@ -3,6 +3,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Articles</title>
+<link th:href="@{/css/style.css}" rel="stylesheet" type="text/css" />
 </head>
 <body>
 	
@@ -36,6 +37,7 @@
 	      <th>Description</th>
 	      <th>Marque</th>
 	      <th>Prix</th>
+	      <th colspan="2">Actions</th>
 	    </tr>
 	  </thead>
 	  <tbody>
@@ -44,9 +46,19 @@
 	      <td th:text="${article.description}">description</td>
 	      <td th:text="${article.brand}">brand</td>
 		  <td th:text="${article.unitaryPrice}">unitaryPrice</td>
+		  <td><a th:href="@{/webshop/article/delete/{idArticle}(idArticle=${article.idArticle})}" th:text="supprimer">supprimer</a></td>
+	      <td><a th:href="@{/webshop/article/save/{idArticle}(idArticle=${article.idArticle})}" th:text="modifier">modifier</a></td>
 	    </tr>
 	  </tbody>
 	</table>
+	
+	<p>
+		<a href="/webshop/article/create" th:href="@{/webshop/article/create}" th:text="'créer un article'">créer un article</a>
+	</p>
+	
+	<p>
+		<a href="/webshop" th:href="@{/webshop}" th:text="Accueil">Accueil</a>
+	</p>
 	
 </body>
 </html>

@@ -3,6 +3,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Roles</title>
+<link th:href="@{/css/style.css}" rel="stylesheet" type="text/css" />
 </head>
 <body>
 	<form th:object="${role}" th:action="@{/webshop/role/search}">
@@ -29,15 +30,26 @@
 	    <tr>
 	      <th>Id</th>
 	      <th>Nom</th>
+	      <th colspan="2">Actions</th>
 	    </tr>
 	  </thead>
 	  <tbody>
 	    <tr th:each="role : ${roles}">
 	      <td th:text="${role.idRole}">id</td>
 	      <td th:text="${role.name}">name</td>
+	      <td><a th:href="@{/webshop/role/delete/{idRole}(idRole=${role.idRole})}" th:text="supprimer">supprimer</a></td>
+	      <td><a th:href="@{/webshop/role/save/{idRole}(idRole=${role.idRole})}" th:text="modifier">modifier</a></td>
 	    </tr>
 	  </tbody>
 	</table>
+	
+	<p>
+		<a href="/webshop/role/create" th:href="@{/webshop/role/create}" th:text="'créer un rôle'">créer un rôle</a>
+	</p>
+	
+	<p>
+		<a href="/webshop" th:href="@{/webshop}" th:text="Accueil">Accueil</a>
+	</p>
 
 </body>
 </html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Modifier une commande</title>
+</head>
+<body>
+	<div th:text="${errorString}">Erreur</div>
+
+	<p>
+		<form action="/webshop/command/save" method="POST" th:object="${command}">
+			<label for="idCommand">Id : </label><input id="idCommand" type="number" name="idCommand" th:value="${command.idCommand}"/>
+			<p th:errors="*{idCommand}">Erreur id</p>
+			<label for="commandDdate">Date : </label><input id="name" type="text" name="commandDdate" th:value="${command.commandDate}"/>
+			<p th:errors="*{commandDate}">Erreur date</p>
+			<label for="idUser">Id utilisateur : </label><input id="idUser" type="number" name="user.getIdUser()" th:value="${command.user.getIdUser()}"/>
+			<p th:errors="*{user}">Erreur id user</p>
+			<input type="submit" value="Sauvegarder">
+			<a href="/webshop/command" th:href="@{/webshop/command}" th:text="annuler">annuler</a>
+		</form>
+		
+	</p>
+</body>
+</html>

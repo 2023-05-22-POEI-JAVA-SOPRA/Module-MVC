@@ -20,8 +20,8 @@ public class RoleService {
 		return this.roleDao.findAll();
 	}
 	
-	public Optional<Role> getById(Long id) {
-		return this.roleDao.findById(id);
+	public Role getById(Long id) {
+		return this.roleDao.findById(id).get();
 	}
 	
 	public Role save(Role role) {

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Modifier un utilisateur</title>
+</head>
+<body>
+<p>
+		<form action="/webshop/user/save" method="POST" th:object="${user}">
+			<label for="idUser">Id : </label><input id="idUser" type="number" name="idUser" th:value="${user.idUser}"/>
+			<p th:errors="*{idUser}">Erreur id</p>
+			<label for="login">Identifiant : </label><input id="login" type="text" name="login" th:value="${user.login}"/>
+			<p th:errors="*{login}">Erreur identifiant</p>
+			<label for="password">Mot de passe : </label><input id="password" type="text" name="password" th:value="${user.password}"/>
+			<p th:errors="*{password}">Erreur mot de passe</p>
+			<label for="connectionNumber">Numéro de connexion : </label><input id="connectionNumber" type="number" name="connectionNumber" th:value="${user.connectionNumber}"/>
+			<p th:errors="*{connectionNumber}">Erreur numéro connexion</p>
+			<input type="submit" value="Sauvegarder">
+			<a href="/webshop/user" th:href="@{/webshop/user}" th:text="annuler">annuler</a>
+		</form>
+		
+	</p>
+</body>
+</html>

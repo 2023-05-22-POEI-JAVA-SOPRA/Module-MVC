@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Commandes</title>
+</head>
+<body>
+	
+	<table>
+	  <thead>
+	    <tr>
+	      <th>Id</th>
+	      <th>Date</th>
+	      <th>Id utilisateur</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	    <tr th:each="command : ${commands}">
+	      <td th:text="${command.idCommand}">id</td>
+	      <td th:text="${command.commandDate}">date</td>
+	      <td th:text="${command.user.getIdUser()}">utilisateur</td>
+		  <td><a th:href="@{/webshop/command/delete/{idCommand}(idCommand=${command.idCommand})}" th:text="supprimer">supprimer</a></td>
+	      <td><a th:href="@{/webshop/command/save/{idCommand}(idCommand=${command.idCommand})}" th:text="modifier">modifier</a></td>
+	    </tr>
+	  </tbody>
+	</table>
+	
+	<p>
+		<a href="/webshop/command/create" th:href="@{/webshop/command/create}" th:text="'créer une commande'">créer une commande</a>
+	</p>
+	
+	<p>
+		<a href="/webshop" th:href="@{/webshop}" th:text="Accueil">Accueil</a>
+	</p>
+	
+</body>
+</html>

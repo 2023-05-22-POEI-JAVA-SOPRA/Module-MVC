@@ -8,12 +8,13 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
 
 @Entity @Table
 public class Article {
 
-	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)@Column(name = "id_article")
+	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)@Column(name = "id_article")@Positive@NotNull
 	private Long idArticle;
 	
 	@Size(max=30)@NotEmpty

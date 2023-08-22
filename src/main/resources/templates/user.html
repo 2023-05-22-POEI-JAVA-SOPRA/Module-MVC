@@ -3,6 +3,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Users</title>
+<link th:href="@{/css/style.css}" rel="stylesheet" type="text/css" />
 </head>
 <body>
 	
@@ -46,17 +47,19 @@
 	      <td th:text="${user.login}">login</td>
 	      <td th:text="${user.password}">password</td>
 	      <td th:text="${user.connectionNumber}">connexionNumber</td>
-	      <td>
-			<form th:object="${user}" th:action="@{/webshop/user/delete}" method="post">
-				<input type="submit" th:field="${user.idUser}" value="supprimer"/>
-			</form>
-	      </td>
-	      <td>
-			<input type="submit" value="modifier"/>
-	      </td>
+	      <td><a th:href="@{/webshop/user/delete/{idUser}(idUser=${user.idUser})}" th:text="supprimer">supprimer</a></td>
+	      <td><a th:href="@{/webshop/user/save/{idUser}(idUser=${user.idUser})}" th:text="modifier">modifier</a></td>
 	    </tr>
 	  </tbody>
 	</table>
+
+	<p>
+		<a href="/webshop/user/create" th:href="@{/webshop/user/create}" th:text="'créer un utilisateur'">créer un utilisateur</a>
+	</p>
+	
+	<p>
+		<a href="/webshop" th:href="@{/webshop}" th:text="Accueil">Accueil</a>
+	</p>
 
 </body>
 </html>

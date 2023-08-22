@@ -1,7 +1,6 @@
 package fr.maboite.webshop.service;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,8 +18,8 @@ public class ArticleService {
 		return this.articleDao.findAll();
 	}
 	
-	public Optional<Article> getById(Long id) {
-		return this.articleDao.findById(id);
+	public Article getById(Long id) {
+		return this.articleDao.findById(id).get();
 	}
 	
 	public Article save(Article article) {
