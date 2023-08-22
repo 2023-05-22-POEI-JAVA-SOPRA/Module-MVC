@@ -38,7 +38,7 @@
 
     <form action="/article-edit" method="post" th:object="${editedArticle}">
         <div class="mb-3">
-            <label for="id" class="form-label">Id : </label>
+            <label for="id" class="text-light form-label">Id : </label>
             <input id="id" readonly="readonly" type="text" name="idArticle" class="form-control"
                 th:value="${editedArticle.idArticle}" />
         </div>

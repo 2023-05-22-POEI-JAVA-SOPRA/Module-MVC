@@ -19,11 +19,11 @@ public class Article {
 	private Integer idArticle;
 	
 	// VERIFIER SI CONFLITS AVEC REGLES BDD
-	@Size(min=3,max=30, message="La description doit faire 30 caracteres max")
+	@Size(min=3,max=30, message="La description doit faire 3 caractères min et 30 caracteres max")
 	@NotNull
 	private String description;
 	
-	@Size(min=3,max=30, message="La marque doit faire 30 caracteres max")
+	@Size(max=30, message="La marque doit faire 30 caracteres max")
 	@NotNull
 	private String brand;
 
