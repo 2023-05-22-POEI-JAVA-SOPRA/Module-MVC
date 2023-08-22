@@ -28,6 +28,7 @@
 			</div>
 		</div>
 	</nav>
+	<div th:text="${errorString}">Erreur</div>
 	<form th:action="${formAction}" method="post" th:object="${user}">
 		<!-- Visible seulement en mode édition -->
 		<div th:if="${editMode}">
@@ -36,27 +37,28 @@
 		<!-- Visible en mode création -->
 		<div th:unless="${editMode}">
 			<input id="id" type="hidden" name="idUser">
+			<p th:errors="*{idUser}"></p>
 		</div>
 		<div>
 			<label for="login">login</label>
 			<input id="login" type="text" name="login" th:value="${user.login}">
+			<p th:errors="*{login}"></p>
 		</div>
 		<div>
 			<label for="password">mot de passe</label>
 			<input id="password" type="text" name="password" th:value="${user.password}">
+			<p th:errors="*{password}"></p>
 		</div>
 		<div>
 			<label for="connectionNumber">Numéro de connexion</label>
-			<input id="connectionNumber" type="text" name="connectionNumber" th:value="${user.connectionNumber}">
+			<input id="connectionNumber" type="number" name="connectionNumber" th:value="${user.connectionNumber}">
+			<p th:errors="*{connectionNumber}"></p>
 		</div>
 		<div>
 			<input type="submit" value="Sauvegarder">
 			<a href="/users">Annuler</a>
 		</div>
-		<ul th:if="${#fields.hasErrors('*')}">
-			<li th:each="err : ${#fields.errors('*')}" th:text="${err}">erreurs</li>
-		</ul>
-	</form>
+		</form>
 </body>
 
 </html>

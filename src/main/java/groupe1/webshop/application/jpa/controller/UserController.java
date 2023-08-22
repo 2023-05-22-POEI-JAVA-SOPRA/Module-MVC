@@ -59,11 +59,11 @@ public class UserController {
 		ModelAndView mav = new ModelAndView();
 		String formAction = (user.getIdUser() != null) ? "/user-edit" : "/user-create";
 		boolean editMode = (user.getIdUser() != null);
-
+		mav.setViewName("userForm");
 		if (bindingResult.hasErrors()) {
-			mav.setViewName("redirect:/users");
 			mav.addObject("user", user);
-			System.out.println("Erreur d'user" + (editMode ? " d'édition" : "") + ", non enregistré !");
+			mav.addObject("editMode", editMode);
+			System.out.println("Erreur" + (editMode ? " d'édition" : " de création") + " de l'user, non enregistré !");
 			System.out.println(bindingResult);
 			mav.addObject("errorString",
 					"Erreur lors de la " + (editMode ? "modification" : "création") + " de l'utilisateur");
