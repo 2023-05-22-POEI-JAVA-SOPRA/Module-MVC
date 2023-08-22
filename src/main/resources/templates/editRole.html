@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Modifier le rôle</title>
+</head>
+<body>
+    <h1>Modifier le rôle</h1>
+    <form th:action="@{/role}" th:object="${role}" method="post">
+        <input type="hidden" th:field="*{idRole}">
+        <label for="name">Nom du rôle:</label>
+        <input type="text" th:field="*{name}" id="name" required>
+        <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="error"></span>
+        <button type="submit">Modifier</button>
+    </form>
+    <a th:href="@{/roles}">Retour à la liste des rôles</a>
+</body>
+</html>

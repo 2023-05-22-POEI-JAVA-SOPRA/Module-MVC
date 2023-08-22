@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Créer un nouveau rôle</title>
+</head>
+<body>
+    <h1>Créer un nouveau rôle</h1>
+    <form th:object="${role}" th:action="@{/role}" method="post">
+        <div>
+            <label for="name">Nom :</label>
+            <input type="text" id="name" name="name" th:field="*{name}" />
+            <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="error"></span>
+        </div>
+        <button type="submit">Enregistrer</button>
+    </form>
+    <a href="/roles">Retour à la liste des rôles</a>
+</body>
+</html>
