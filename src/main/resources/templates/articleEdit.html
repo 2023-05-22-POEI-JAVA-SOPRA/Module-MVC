@@ -13,7 +13,7 @@
 		<form action="/article-edit" method="post" th:object="${editedArticle}">
 			<div>
 				<label for="id">Id : </label>
-				<input id="id" disabled="disabled" type="text" name="id" value="Id" th:value="${editedArticle.idArticle}" />
+				<input id="id" readonly="readonly" type="text" name="idArticle" value="Id" th:value="${editedArticle.idArticle}" />
 			</div>
 			<div>
 				<label for="brand">Marque : </label>

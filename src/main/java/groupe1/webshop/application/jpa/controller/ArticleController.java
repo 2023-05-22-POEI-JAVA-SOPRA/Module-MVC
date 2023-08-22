@@ -61,9 +61,10 @@ public class ArticleController {
 			return mav;
 		}
 		ModelAndView mav = new ModelAndView();
+		artServ.save(article);
+		System.out.println(article.toString());
 		mav.setViewName("redirect:/articles"); // nom de la vue (page html)
 		mav.addObject("editedArticle", article); // nom du mlodel attribute et valeur de l'object
-		System.out.println(article.toString());
 		return mav;
 	}
 

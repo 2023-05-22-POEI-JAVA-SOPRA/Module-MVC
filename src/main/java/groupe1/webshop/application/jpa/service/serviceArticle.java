@@ -37,4 +37,8 @@ public class serviceArticle {
 		return this.monArticleDao.findByMarqueAndPrixRange(marque, prixMin, prixMax);
 	}
 	
+	public Article save(Article article) {
+		return this.monArticleDao.save(article);
+	}
+	
 }
