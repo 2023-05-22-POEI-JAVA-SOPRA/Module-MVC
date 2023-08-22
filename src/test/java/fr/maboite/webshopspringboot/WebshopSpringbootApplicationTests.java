@@ -15,12 +15,19 @@ import fr.maboite.webshopspringboot.service.RoleService;
 @SpringBootTest
 class WebshopSpringbootApplicationTests {
 
+
+	
+	@Test
+	void contextLoads() {
+	}
+
 	@Autowired
     private RoleService roleService;
 	
 	@BeforeEach
 	public void setup() {
 	    List<Role> roles = roleService.getAllRoles();
+
 
 	    for (Role role : roles) {
 	        roleService.deleteRole(role.getIdRole());

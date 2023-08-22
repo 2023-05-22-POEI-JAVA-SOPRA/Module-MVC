@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Welocome to Our Application !</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+	<div>c'est la page des articles</div>
+	<div>Id :</div>
+	<div th:text="${article.id}">1</div>
+	<div>description :</div>
+	<div th:text="${article.description}">GM</div>
+	<div>brand :</div>
+	<div th:text="${article.brand}">GM</div>
+	<div>unitaryPrice :</div>
+	<div th:text="${article.unitaryPrice}">1</div>
+
+	
+
+	<div>Amusons-nous avec les hyperliens :</div>
+	<p>
+		<a href="article.html" th:href="@{/article(id=${monMessage}}" </a>
+	</p>
+	</div>
+
+</body>
+
+</html>

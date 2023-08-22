@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Welocome to articles !</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+
+	<h1>Liste des articles :</h1>
+	
+		<div>
+
+		<form th:action="@{/articles}" method="get">
+
+			<label for="searchName">Rechercher par description : </label>
+
+			<input type="text" id="searchName" name="searchName" th:value="${searchName}" />
+
+			<button type="submit">Rechercher</button>
+
+		</form>
+
+		<a th:if="${searchName}" th:href="@{/articles}">Retour à la liste des articles</a>
+
+
+
+	</div>
+
+    
+	<ul>
+
+		<li th:each="article : ${articles}">
+			<a href="article.html" th:href="@{/article(id=${article.id})}" th:text="${article.description}">lien</a>
+			<a href="article.html" th:href="@{/article(id=${article.id})}" th:text="${article.brand}">lien</a>
+			<a href="article.html" th:href="@{/article(id=${article.id})}" th:text="${article.unitaryPrice}">lien </a>
+		</li>
+	</ul>
+	
+
+
+
+</body>
+
+</html>

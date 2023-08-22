@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Créer un nouveau Article !</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+	<h2>Créer un nouveau Article</h2>
+	<form th:object="${article}" th:action="@{/article}" method="post">
+
+		<div>
+			<label for="description">Description</label>
+			<input type="text" id="description" name="description" th:field="*{description}" />
+			<span th:if="${#fields.hasErrors('description')}" th:errors="*{description}" classe="error"></span>
+
+		</div>
+		<div>
+			<label for="brand">Brand</label>
+			<input type="text" id="brand" name="brand" th:field="*{brand}" />
+			<span th:if="${#fields.hasErrors('brand')}" th:errors="*{brand}" classe="error"></span>
+
+		</div>
+		<div>
+			<label for="unitaryPrice">UnitaryPrice</label>
+			<input type="text" id="unitaryPrice" name="unitaryPrice" th:field="*{unitaryPrice}" />
+			<span th:if="${#fields.hasErrors('unitaryPrice')}" th:errors="*{unitaryPrice}" classe="error"></span>
+
+		</div>
+
+		<button type="submit">Enregistrer</button>
+	</form>
+	<a href="/articles">retour à la liste des articles</a>
+
+
+
+</body>
