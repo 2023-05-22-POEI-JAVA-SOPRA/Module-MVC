@@ -57,13 +57,19 @@ public class UserController {
 	@PostMapping({ "/user-edit", "/user-create" })
 	public ModelAndView saveUser(@Validated @ModelAttribute("user") User user, BindingResult bindingResult) {
 		ModelAndView mav = new ModelAndView();
-		String formAction = (user.getIdUser() != null) ? "/user-edit" : "/user-create";
-		boolean editMode = (user.getIdUser() != null);
-
+		String formAction;
+		boolean editMode;
 		if (bindingResult.hasErrors()) {
-			mav.setViewName("redirect:/users");
+			if (user.getIdUser() != null) {
+				editMode = true;
+				formAction = "/user-edit";
+			} else {
+				editMode = false;
+				formAction = "/user-create";
+			}
+			mav.setViewName("userForm");
 			mav.addObject("user", user);
-			System.out.println("Erreur d'user" + (editMode ? " d'édition" : "") + ", non enregistré !");
+			System.out.println("Erreur" + (editMode ? " d'édition" : " de création") + " de l'user, non enregistré !");
 			System.out.println(bindingResult);
 			mav.addObject("errorString",
 					"Erreur lors de la " + (editMode ? "modification" : "création") + " de l'utilisateur");
