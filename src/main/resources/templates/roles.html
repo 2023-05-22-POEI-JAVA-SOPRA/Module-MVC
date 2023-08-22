@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Liste des roles</title>
+</head>
+<body>
+    <h1>Liste des roles</h1>
+
+    <div>
+        <form th:action="@{/roles}" method="get">
+            <label for="searchName">Rechercher par nom : </label>
+            <input type="text" id="searchName" name="searchName" th:value="${searchName}" />
+            <button type="submit">Rechercher</button>
+        </form>
+        <a th:if="${searchName}" th:href="@{/roles}">Retour à la liste des rôles</a>
+
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nom</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="role : ${roles}">
+                <td th:text="${role.idRole}"></td>
+                <td th:text="${role.name}"></td>
+                <td>
+                    <a th:href="@{/role/edit/{id}(id=${role.idRole})}">Modifier</a>
+                    <a th:href="@{/role/delete/{id}(id=${role.idRole})}">Supprimer</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <a th:href="@{/role/create}">Créer un nouveau rôle</a>
+</body>
+</html>
+
