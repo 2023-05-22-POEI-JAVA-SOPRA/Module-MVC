@@ -17,7 +17,7 @@
 		<ul th:each="error : ${error}">
 			<li th:text="${error}"></li>
 		</ul>
-		<form th:action="@{/article/} + ${article.idArticle}" method="post">
+		<form th:action="@{/article}" method="post">
 
   			<div class="mb-3">
     			<label for="description" class="form-label">Description</label>

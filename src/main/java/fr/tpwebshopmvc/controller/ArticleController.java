@@ -64,7 +64,10 @@ public class ArticleController {
 			return mav;
 		}
 		
-		return new ModelAndView("addArticle");
+		articleService.save(article);
+		
+		
+		return new ModelAndView("redirect:/articles");
 	}
 	
 	@GetMapping("/put-article/{id}")
