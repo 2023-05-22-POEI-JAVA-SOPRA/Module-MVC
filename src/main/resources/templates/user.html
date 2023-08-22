@@ -1,44 +1,48 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org/" >
+<html xmlns:th="http://www.thymeleaf.org/">
 
 <head>
-<meta charset="UTF-8">
-<title>BABIBU</title>
+	<meta charset="UTF-8">
+	<title>BABIBU</title>
 </head>
+
 <body>
-	
-	
-<h1>Mes utilisateurs :</h1>
+
+
+	<h1>Mes utilisateurs :</h1>
 
 	<form method="GET" action="/users">
 		<label for="login">Rechercher un login : </label>
-		<input type="text" name="login" id="login"> 
-		<input type="submit" value="Rechercher" >
+		<input type="text" name="login" id="login">
+		<input type="submit" value="Rechercher">
 	</form>
 	<br><br>
-	 <table border="1">
-        <tr>
-            <th>Id</th>
-            <th>Login</th>
-            <th>password (c'est franchement limite)</th>
-            <th>Numéro de connexion</th>
-            <th>Actions</th>
-        </tr>
-       
-        <tr th:each="user:${users}" >
-            <td th:text="${user.idUser}">a</td>
-            <td th:text="${user.login}">b</td>
-            <td th:text="${user.password}">c</td>
-            <td th:text="${user.connectionNumber}">d</td>
-            <td>
-				<a>Supprimer</a>
-				<span>&nbsp; &nbsp;</span> <!--ajout un espace -->
-				<a href="userEdit.html">Modifier</a>
+	<table border="1">
+		<tr>
+			<th>Id</th>
+			<th>Login</th>
+			<th>password (c'est franchement limite)</th>
+			<th>Numéro de connexion</th>
+			<th>Actions</th>
+		</tr>
+
+		<tr th:each="user:${users}">
+			<td th:text="${user.idUser}">a</td>
+			<td th:text="${user.login}">b</td>
+			<td th:text="${user.password}">c</td>
+			<td th:text="${user.connectionNumber}">d</td>
+			<td>
+				<form th:action="@{/delete-user}" th:method="post">
+					<input type="hidden" name="id" th:value="${user.idUser}" />
+					<button type="submit">Supprimer</button>
+				</form>
 			</td>
-        </tr>
-    </table>
-    
-    <h2>Nouvel utilisateur</h2>
-    <p><a href="userCreate.html">C'est par ici</a></p>
+			<td><a href="userEdit.html" th:href="@{/user-edit(id=${user.idUser})} ">Modifier</a></td>
+		</tr>
+	</table>
+
+	<h2>Nouvel utilisateur</h2>
+	<p><a href="userCreate.html" th:href="@{/user-create} ">C'est par ici</a></p>
 </body>
+
 </html>
