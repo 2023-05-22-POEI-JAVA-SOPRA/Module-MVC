@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+
+<head>
+	<title>Modification d'un role</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+	<h1>Modification d'un role</h1>
+	<div>
+		<!-- action = lien sur lequel on veut aller quand on appuie sur submit-->
+		<form action="/role-edit" method="post" th:object="${editedRole}">
+			<div>
+				<label for="id">Id : </label>
+				<input id="id" readonly="readonly" type="text" name="idRole" value="Id" th:value="${editedRole.idRole}" />
+			</div>
+			<div>
+				<label for="name">Nom Role : </label>
+				<input id="name" type="text" name="name" value="Nom" th:value="${editedRole.name}" />
+				<p th:errors="*{name}">Erreur de marque</p>
+			</div>
+			<div>
+				<input type="submit" value="sauvegarder" />
+				<a href="/roles">Annuler</a>
+			</div>
+		</form>
+	</div>
+</body>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Création role</title>
+</head>
+
+<body>
+	<h1>Créer un role : </h1>
+	
+	<form action="/role-create" method="post" th:object="${newRole}">
+			<div>
+				<label for="id">Id : </label>
+				<input id="id" readonly="readonly" type="text" name="idRole" value="Id" th:value="${newRole.idRole}" />
+			</div>
+			<div>
+				<label for="name">Nom : </label>
+				<input id="name" type="text" name="name" value="Nom" th:value="${newRole.name}" />
+				<p th:errors="*{name}">Erreur de nom</p>
+			</div>
+			<div>
+				<input type="submit" value="sauvegarder" />
+				<a href="/roles">Annuler</a>
+			</div>
+		</form>
+
+	
+
+</body>
+
+</html>

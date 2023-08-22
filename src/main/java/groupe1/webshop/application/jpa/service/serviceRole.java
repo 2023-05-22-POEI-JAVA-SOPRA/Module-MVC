@@ -37,4 +37,8 @@ public class serviceRole {
 		return this.monRoleDao.findByNameIgnoreCaseContaining(nom);
 	}
 
+	public Object getByRoleName(String descr) {
+		return this.monRoleDao.findByNameIgnoreCaseContaining(descr);
+	}
+
 }

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Mes roles</title>
+</head>
+
+<body>
+
+
+	<h1>Mes roles :</h1>
+	<div>
+		<form method="GET" action="/roles?recherche=">
+			<input id="recherche" name="recherche" type="text" placeholder="Rechercher" />
+			<input for="Rechercher" type="submit" />
+		</form>
+	</div>
+	<div>
+		<table border="1">
+			<thead>
+				<tr>
+					<th colspan="">Id</th>
+					<th colspan="">Nom</th>
+					<th colspan="">Suppr</th>
+					<th colspan="">Modifier</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="role:${maListeRole}">
+					<td th:text="${role.idRole}"></td>
+					<td th:text="${role.name}"></td>
+
+					<td>
+						<!-- <a href="./delete-role?id=4554">supprimer</a> method à transformer en get-->
+						<form th:action="@{/delete-role}" th:method="post">
+							<input type="hidden" name="id" th:value="${role.idRole}" />
+							<button type="submit">Supprimer</button>
+						</form>
+					</td>
+					<td><a href="roleEdit.html" th:href="@{/role-edit(id=${role.idRole})} ">Modifier</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<h2>Créer un role : </h2>
+		<div>
+			<p><a th:href="@{/role-create}">
+					Créer un nouveau role</a></p>
+		</div>
+	</div>
+
+</body>
+
+</html>
