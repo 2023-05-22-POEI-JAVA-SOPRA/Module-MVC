@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
+<<<<<<< HEAD
 	<name>Module-MVC</name>
+=======
+	<name>SpringMVC_Webshop</name>
+>>>>>>> ec66fbcce9d1601f9f659cbda6b745d83ec73a3e
 	<comment></comment>
 	<projects>
 	</projects>
