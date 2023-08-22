@@ -9,7 +9,8 @@
 <body>
 	<h1>Modification d'un article</h1>
 	<div>
-		<form action="./articleEdit" method="post" th:object="${editedArticle}">
+		<!-- action = lien sur lequel on veut aller quand on appuie sur submit-->
+		<form action="/article-edit" method="post" th:object="${editedArticle}">
 			<div>
 				<label for="id">Id : </label>
 				<input id="id" disabled="disabled" type="text" name="id" value="Id" th:value="${editedArticle.idArticle}" />
