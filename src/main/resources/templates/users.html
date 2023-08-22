@@ -15,12 +15,12 @@
 
 
 		<h1>User list</h1>
-		<ul>
-			<li th:each="user : ${users}">
+<!--		<ul>-->
+<!--			<li th:each="user : ${users}">-->
 
-				<p th:text="${user.login}"></p>
-			</li>
-		</ul>
+<!--				<p th:text="${user.login}"></p>-->
+<!--			</li>-->
+<!--		</ul>-->
 		<form method="get" action="user" th:action="@{/users/search}" th:object="${users}">
 			<div class="input-group mb-3 w-25 ">
 				<input type="text" name="searchByLogin" th:value="${searchByLogin}" class="form-control"

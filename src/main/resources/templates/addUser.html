@@ -25,7 +25,7 @@
 					<label for="connectionNumber"> Number of connections</label>
 					<input id="connectionNumber" name="connectionNumber" type="text"
 						th:value="${user.connectionNumber}" />
-					<br>
+				
 					<input type="submit" th:value="Save" />
 				</div>
 				<ul th:if="${#fields.hasErrors('*')}">

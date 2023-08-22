@@ -15,12 +15,12 @@
 
 
 		<h1>Role list</h1>
-		<ul>
-			<li th:each="role : ${roles}">
+<!--		<ul>-->
+<!--			<li th:each="role : ${roles}">-->
 
-				<p th:text="${role.roleName}"></p>
-			</li>
-		</ul>
+<!--				<p th:text="${role.roleName}"></p>-->
+<!--			</li>-->
+<!--		</ul>-->
 		<form method="get" action="role" th:action="@{/roles/search}" th:object="${roles}">
 			<div class="input-group mb-3 w-25 ">
 				<input type="text" name="searchByRoleName" th:value="${searchByRoleName}" class="form-control"
