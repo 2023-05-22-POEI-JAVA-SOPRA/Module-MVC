@@ -12,7 +12,11 @@
     <br>
     <br>
     
-	<form th:action="@{/roles/find}">
+    <div>Créer un nouveau rôle : </div><a th:text="Create" th:href="@{/roles/register}">
+    
+    <br>
+    <br>
+	<form th:action="@{/roles}">
 		<div>Recherche par name :</div>
 		<div>
 			<label for="partialName">Name:</label>
@@ -30,11 +34,19 @@
   		<tr>
     		<th>Id</th>
     		<th>Nom</th>
+    		<th>Supprimer</th>
+    		<th>Modifier</th>
   		</tr>
   		<div th:each="role : ${roles}">
 			<tr>
     			<td th:text="${role.id}"></td>
     			<td th:text="${role.name}"></td>
+    			<td>
+					<a th:text="Supprimer" th:href="@{/roles/{roleId}(roleId=${role.id})}">
+				</td>
+    			<td>
+					<a th:text="Modifier" th:href="@{/roles/register/{roleId}(roleId=${role.id})}">
+				</td>
   			</tr>
 		</div>
   	</table>

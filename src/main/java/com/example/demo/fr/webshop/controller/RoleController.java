@@ -3,6 +3,8 @@ package com.example.demo.fr.webshop.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -19,24 +21,31 @@ public class RoleController {
 	
 
 	@GetMapping(path = {"/roles", "/roles.html"})
-	public ModelAndView afficheRoles() {
+	public ModelAndView afficheRoles(@RequestParam(value = "partialName", required = false) String partialName) {
 		 System.out.println("J'affiche la page roles");
 
 		 ModelAndView mav = new ModelAndView();
 		 mav.setViewName("roles");
-		 mav.addObject("roles", roleService.getAll());
 		 
-		 return mav;
+		 if(partialName==null) {
+			 mav.addObject("roles", roleService.getAll());
+			 return mav;
+		 } else {
+			 mav.addObject("roles", roleService.getByNameLike(partialName));
+			 return mav;			 
+		 }
 	}
 	
-
-	@GetMapping("/roles/find")
-	public ModelAndView sauvegardePlanete(@RequestParam(value = "partialName") String partialName) {
+	
+	@RequestMapping(path = "/roles/{id}")
+	public ModelAndView deleteRole(@PathVariable(value = "id") Long id) {
+		System.out.println("Méthode deleteRole appelée");
 
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("/roles");
-		mav.addObject("roles", roleService.getByNameLike(partialName));
-
+		mav.setViewName("redirect:/roles");
+		 
+		roleService.delete(id);
+		
 		return mav;
 	}
 	

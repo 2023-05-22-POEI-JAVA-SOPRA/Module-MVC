@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" >
+
+  <head>
+    <title>Register Article</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  </head>
+
+  <body>
+  
+  
+	<div>Enregistrement Article : </div>
+	<br>
+	
+	<form th:action="@{/articles/register}" method="POST" th:object="${article}">
+		<div>
+			<label for="id">Id:</label>
+			<input id="id" type="text" name="id"/>
+		</div>
+		<div>
+			<label for="description">Description:</label>
+			<input id="nom" type="text" name="description"/>
+		</div>
+		<div>
+			<label for="brand">Brand:</label>
+			<input id="nom" type="text" name="brand"/>
+		</div>
+		<div>
+			<label for="unitaryPrice">UnitaryPrice:</label>
+			<input id="nom" type="text" name="unitaryPrice"/>
+		</div>
+		<div>
+			<input type="submit" value="save" />
+		</div>
+	</form>
+
+  </body>
+</html>

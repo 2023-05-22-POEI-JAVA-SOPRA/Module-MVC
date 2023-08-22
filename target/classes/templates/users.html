@@ -12,7 +12,11 @@
     <br>
     <br>
     
-	<form th:action="@{/users/find}">
+    <div>Créer un nouveau user : </div><a th:text="Create" th:href="@{/users/register}">
+    
+    <br>
+    <br>
+	<form th:action="@{/users}">
 		<div>Recherche par login :</div>
 		<div>
 			<label for="partialLogin">Login:</label>
@@ -32,6 +36,8 @@
     		<th>Login</th>
     		<th>Password</th>
     		<th>ConnectionNumber</th>
+    		<th>Supprimer</th>
+    		<th>Modifier</th>
   		</tr>
   		<div th:each="user : ${users}">
 			<tr>
@@ -39,9 +45,17 @@
     			<td th:text="${user.login}"></td>
     			<td th:text="${user.password}"></td>
     			<td th:text="${user.connectionNumber}"></td>
+    			<td>
+					<a th:text="Supprimer" th:href="@{/users/{userId}(userId=${user.id})}">
+				</td>
+    			<td>
+					<a th:text="Modifier" th:href="@{/users/register/{userId}(userId=${user.id})}">
+				</td>
   			</tr>
 		</div>
   	</table>
+
+
 
   </body>
 </html>
