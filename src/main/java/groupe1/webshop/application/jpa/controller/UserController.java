@@ -37,19 +37,21 @@ public class UserController {
 
 	@GetMapping("/user-edit")
 	public ModelAndView afficheEditUser(@RequestParam Integer id) {
-		ModelAndView mav = new ModelAndView();
+		ModelAndView mav = new ModelAndView("userForm");
 		User user = sUser.getById(id).get();
-		mav.setViewName("userEdit");
-		mav.addObject("editedUser", user);
+//		mav.setViewName("userForm");
+		mav.addObject("formAction", "/user-edit");
+		mav.addObject("editMode", true);
+		mav.addObject("user", user);
 		return mav;
 	}
 
 	@PostMapping("/user-edit")
-	public ModelAndView editUser(@Validated @ModelAttribute("editedUser") User user, BindingResult bindingResult) {
+	public ModelAndView editUser(@Validated @ModelAttribute("user") User user, BindingResult bindingResult) {
 		if (bindingResult.hasErrors()) {
 			ModelAndView mav = new ModelAndView();
 			mav.setViewName("redirect:/users"); // nom de la vue (page html)
-			mav.addObject("editedUser", user); // nom du model attribute et valeur de l'object
+			mav.addObject("user", user); // nom du model attribute et valeur de l'object
 			System.out.println("Erreur d'user, je ne sauvegarde pas.");
 			System.out.println(bindingResult);
 			mav.addObject("errorString", "Erreur dans l'user !");
@@ -59,25 +61,27 @@ public class UserController {
 		sUser.save(user);
 		System.out.println(user.toString());
 		mav.setViewName("redirect:/users"); // nom de la vue (page html)
-		mav.addObject("editedUser", user); // nom du mlodel attribute et valeur de l'object
+		mav.addObject("user", user); // nom du mlodel attribute et valeur de l'object
 		return mav;
 	}
 
 	@GetMapping("/user-create")
 	public ModelAndView afficheSaveUser() {
-		ModelAndView mav = new ModelAndView();
+		ModelAndView mav = new ModelAndView("userForm");
 		User user = new User();
-		mav.setViewName("userCreate");
-		mav.addObject("savedUser", user);
+//		mav.setViewName("userForm");
+		mav.addObject("formAction", "/user-create");
+		mav.addObject("editMode", false);
+		mav.addObject("user", user);
 		return mav;
 	}
 	
 	@PostMapping("/user-create")
-	public ModelAndView saveUser(@Validated @ModelAttribute("savedUser") User user, BindingResult bindingResult) {
+	public ModelAndView saveUser(@Validated @ModelAttribute("user") User user, BindingResult bindingResult) {
 		if (bindingResult.hasErrors()) {
 			ModelAndView mav = new ModelAndView();
 			mav.setViewName("redirect:/users");
-			mav.addObject("savedUser", user);
+			mav.addObject("user", user);
 			System.out.println("Erreur d'user, non enregistré !");
 			System.out.println(bindingResult);
 			mav.addObject("errorString", "Erreur lors de la création de l'user");
@@ -87,7 +91,7 @@ public class UserController {
 		sUser.save(user);
 		System.out.println(user.toString());
 		mav.setViewName("redirect:/users"); // nom de la vue (page html)
-		mav.addObject("savedUser", user); // nom du mlodel attribute et valeur de l'object
+		mav.addObject("user", user); // nom du mlodel attribute et valeur de l'object
 		return mav;
 	}
 }
