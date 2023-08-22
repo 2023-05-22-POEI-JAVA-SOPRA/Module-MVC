@@ -1,5 +1,7 @@
 package fr.tpwebshopmvc.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,14 +14,22 @@ public class RoleService {
 	@Autowired
 	private RoleRepository repository;
 
-	public Iterable<Role> findAll() {
-		return repository.findAll();
+	public List<Role> findAll() {
+		return (List<Role>) repository.findAll();
 	}
 
 	public Role findById(Integer id) {
 		return repository.findById(id).orElse(null);
 	}
-
+	
+	public Role getByRoleName(String roleName)
+	{
+		return repository.findByRoleName(roleName);
+	}
+	public List<Role> getAllByRoleName(String roleName)
+	{
+		return repository.findAllByRoleName(roleName);
+	}
 	public Role save(Role role) {
 		return repository.save(role);
 	}
@@ -28,7 +38,7 @@ public class RoleService {
 		repository.delete(role);
 	}
 
-	public Iterable<Role> getByRoleNameLike(String roleName) {
+	public List<Role> getByRoleNameLike(String roleName) {
 		return repository.findByRoleNameContainingIgnoreCase(roleName);
 	}
 
