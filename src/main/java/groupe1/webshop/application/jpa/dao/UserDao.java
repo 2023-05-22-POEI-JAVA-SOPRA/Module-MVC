@@ -11,5 +11,5 @@ import groupe1.webshop.application.jpa.entity.User;
 public interface UserDao extends CrudRepository<User,Integer>{
 	List<User> findAll();
 
-	List<User> findByLoginAndPassword(String login, String password);
+	List<User> findByLoginContainingIgnoreCase(String login);
 }
