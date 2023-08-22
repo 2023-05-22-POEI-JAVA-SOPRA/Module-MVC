@@ -39,7 +39,7 @@
         </form>
     </div>
     <div>
-        <table class="table table-bordered">
+        <table class="table table-bordered table-dark">
             <thead>
                 <tr>
                     <th scope="col">Id</th>
@@ -52,14 +52,14 @@
                 <tr th:each="role : ${maListeRole}">
                     <td th:text="${role.idRole}"></td>
                     <td th:text="${role.name}"></td>
-                    <td>
+                    <td class="text-center">
                         <form th:action="@{/delete-role}" th:method="post">
                             <input type="hidden" name="id" th:value="${role.idRole}" />
                             <button type="submit" class="btn btn-danger">Supprimer</button>
                         </form>
                     </td>
-                    <td>
-                        <a th:href="@{/role-edit(id=${role.idRole})}" class="btn btn-secondary">Modifier</a>
+                    <td class="text-center">
+                        <a th:href="@{/role-edit(id=${role.idRole})}" class="btn btn-primary">Modifier</a>
                     </td>
                 </tr>
             </tbody>
