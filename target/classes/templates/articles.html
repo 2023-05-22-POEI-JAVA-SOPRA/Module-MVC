@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" >
+
+  <head>
+    <title>Articles</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" th:href="@{/css/style-thomas.css}">
+  </head>
+
+  <body>
+    <h1>Articles</h1>
+    <br>
+    <br>
+    
+	<form th:action="@{/articles/find}">
+		<div>Recherche par description :</div>
+		<div>
+			<label for="partialDescription">Description:</label>
+			<input id="partialDescription" type="text" name="partialDescription" />
+			<input type="submit" value="rechercher" />
+		</div>
+	</form>
+    
+    
+    <br>
+    <br> 
+    
+    
+    <table style="width:100%">
+  		<tr>
+    		<th>Id</th>
+    		<th>Description</th>
+    		<th>Brand</th>
+    		<th>UnitaryPrice</th>
+  		</tr>
+  		<div th:each="article : ${articles}">
+			<tr>
+    			<td th:text="${article.id}"></td>
+    			<td th:text="${article.description}"></td>
+    			<td th:text="${article.brand}"></td>
+    			<td th:text="${article.unitaryPrice}"></td>
+  			</tr>
+		</div>
+  	</table>
+  
+
+
+  </body>
+</html>

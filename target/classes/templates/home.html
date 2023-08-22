@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" >
+
+  <head>
+    <title>Home</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  </head>
+
+  <body>
+    <h1>Bienvenue</h1>
+    <br>
+    <ul>
+ 		<li><a href="articles.html" th:text="Articles" th:href="@{/articles}">Articles</li>
+ 		<li><a href="roles.html" th:text="Roles" th:href="@{/roles}">Roles</li>
+ 		<li><a href="users.html" th:text="Users" th:href="@{/users}">Users</li>
+ 	</ul>
+
+  </body>
+</html>

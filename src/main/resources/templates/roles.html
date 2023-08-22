@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" >
+
+  <head>
+    <title>Roles</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" th:href="@{/css/style-thomas.css}">
+  </head>
+
+  <body>
+    <h1>Roles</h1>
+    <br>
+    <br>
+    
+	<form th:action="@{/roles/find}">
+		<div>Recherche par name :</div>
+		<div>
+			<label for="partialName">Name:</label>
+			<input id="partialName" type="text" name="partialName" />
+			<input type="submit" value="rechercher" />
+		</div>
+	</form>
+    
+    
+    <br>
+    <br> 
+    
+    
+    <table style="width:100%">
+  		<tr>
+    		<th>Id</th>
+    		<th>Nom</th>
+  		</tr>
+  		<div th:each="role : ${roles}">
+			<tr>
+    			<td th:text="${role.id}"></td>
+    			<td th:text="${role.name}"></td>
+  			</tr>
+		</div>
+  	</table>
+
+  </body>
+</html>
