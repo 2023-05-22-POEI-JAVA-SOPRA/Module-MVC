@@ -4,8 +4,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title th:if="${editMode}">Modification Utilisateur</title>
-	<title th:unless="${editMode}">Création Utilisateur</title>
+	<title>C'EST L'ACCUEIL</title>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
 		integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 </head>
@@ -28,35 +27,3 @@
 			</div>
 		</div>
 	</nav>
-	<form th:action="${formAction}" method="post" th:object="${user}">
-		<!-- Visible seulement en mode édition -->
-		<div th:if="${editMode}">
-			<input id="id" readonly type="text" name="idUser" th:value="${user.idUser}">
-		</div>
-		<!-- Visible en mode création -->
-		<div th:unless="${editMode}">
-			<input id="id" type="hidden" name="idUser">
-		</div>
-		<div>
-			<label for="login">login</label>
-			<input id="login" type="text" name="login" th:value="${user.login}">
-		</div>
-		<div>
-			<label for="password">mot de passe</label>
-			<input id="password" type="text" name="password" th:value="${user.password}">
-		</div>
-		<div>
-			<label for="connectionNumber">Numéro de connexion</label>
-			<input id="connectionNumber" type="text" name="connectionNumber" th:value="${user.connectionNumber}">
-		</div>
-		<div>
-			<input type="submit" value="Sauvegarder">
-			<a href="/users">Annuler</a>
-		</div>
-		<ul th:if="${#fields.hasErrors('*')}">
-			<li th:each="err : ${#fields.errors('*')}" th:text="${err}">erreurs</li>
-		</ul>
-	</form>
-</body>
-
-</html>
