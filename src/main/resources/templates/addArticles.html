@@ -11,6 +11,9 @@
 <body>
 <h1>Ajouter article</h1>
 <br>
+<a th:href="@{/annuler-article}" class="link-body-emphasis link-offset-2 link-underline-opacity-25 link-underline-opacity-75-hover">Annuler l'action</a>
+	
+	<br>
 		<ul th:each="error : ${error}">
 			<li th:text="${error}"></li>
 		</ul>

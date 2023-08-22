@@ -33,6 +33,12 @@ public class ArticleController {
 		return new ModelAndView("articles","articles",allArticles);
 	}
 	
+	@GetMapping("/annuler-article")
+	public ModelAndView putArticle() {
+		
+		return new ModelAndView("redirect:/articles");
+	}
+	
 	@GetMapping("/filtre-articles")
 	public ModelAndView filtreArticles(@RequestParam String filtre)
 	{
