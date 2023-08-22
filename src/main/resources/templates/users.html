@@ -23,7 +23,7 @@
 <!--		</ul>-->
 		<form method="get" action="user" th:action="@{/users/search}" th:object="${users}">
 			<div class="input-group mb-3 w-25 ">
-				<input type="text" name="searchByLogin" th:value="${searchByLogin}" class="form-control"
+				<input type="text" id="searchByLogin"name="searchByLogin" th:value="${searchByLogin}" class="form-control"
 					placeholder="User's Login" aria-label="User's Login" aria-describedby="button-addon2">
 				<button class="btn btn-outline-secondary" type="submit">Search</button>
 		</form>

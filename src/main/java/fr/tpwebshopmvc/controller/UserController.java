@@ -30,17 +30,27 @@ public class UserController {
 	}
 
 	@GetMapping("/users/search") // http://localhost:8080/tpwebshopmvc/users/search?searchByLogin=rip
-	public ModelAndView filterUserRequestParam(@RequestParam("searchByLogin") String login) {
+	public ModelAndView filterUserRequestParam(@RequestParam("searchByLogin") String searchByLogin) {
 		System.out.println("users filter by login ");
-		List<User> usersFiltered = userService.getByLoginLike(login);
-		return new ModelAndView("users", "users", usersFiltered);
+		List<User> usersFiltered = userService.getByLoginLike(searchByLogin);
+	
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("users");
+		mv.addObject("searchByLogin", searchByLogin);
+		mv.addObject("users", usersFiltered);
+		
+		return mv;
 	}
 
 	@GetMapping("/users/search/{searchByLogin}") // http://localhost:8080/tpwebshopmvc/users/search/rip
-	public ModelAndView filterUserPathParam(@PathVariable("searchByLogin") String login) {
+	public ModelAndView filterUserPathParam(@PathVariable("searchByLogin") String searchByLogin) {
 		System.out.println("users filter by login ");
-		List<User> usersFiltered = userService.getByLoginLike(login);
-		return new ModelAndView("users", "users", usersFiltered);
+		List<User> usersFiltered = userService.getByLoginLike(searchByLogin);
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("users");
+		mv.addObject("searchByLogin", searchByLogin);
+		mv.addObject("users", usersFiltered);
+		return mv;
 	}
 
 	@GetMapping("/users/delete") // http://localhost:8080/tpwebshopmvc/users/delete?id=1

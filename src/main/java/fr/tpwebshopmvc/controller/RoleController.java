@@ -1,7 +1,5 @@
 package fr.tpwebshopmvc.controller;
-
-
-
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -63,8 +61,12 @@ public class RoleController {
 	@GetMapping("/roles/search") // http://localhost:8080/tpwebshopmvc/users/search/rip
 	public ModelAndView filterUserPathParam(@RequestParam("searchByRoleName") String searchByRoleName) {
 		System.out.println("roles filter by rolename ");
-		Iterable<Role> rolesFiltered = roleService.getByRoleNameLike(searchByRoleName);
-		return new ModelAndView("roles", "roles", rolesFiltered);
+		List<Role> rolesFiltered = roleService.getByRoleNameLike(searchByRoleName);
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("roles");
+		mv.addObject("searchByRoleName", searchByRoleName);
+		mv.addObject("roles", rolesFiltered);
+		return mv;
 	}
 	@PostMapping("/roles/saveRole")
 	public ModelAndView save(@Validated @ModelAttribute("role") Role role, BindingResult bindingResult) {
