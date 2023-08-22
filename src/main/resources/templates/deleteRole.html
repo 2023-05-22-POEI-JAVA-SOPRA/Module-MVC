@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Supprimer le rôle</title>
+</head>
+<body>
+    <h1>Supprimer le rôle</h1>
+    <p>Voulez-vous vraiment supprimer le rôle : <strong th:text="${role.name}"></strong> ?</p>
+    <form th:action="@{/role/delete/{id}(id=${role.idRole})}" method="post">
+        <button type="submit">Confirmer la suppression</button>
+    </form>
+    <a th:href="@{/roles}">Retour à la liste des rôles</a>
+</body>
+</html>
