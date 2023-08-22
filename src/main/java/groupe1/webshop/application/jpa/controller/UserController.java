@@ -34,19 +34,18 @@ public class UserController {
 		System.out.println("on supprime : " + id);
 		return "redirect:/users"; // Redirection sur la page de base
 	}
-	
+
 	@GetMapping("/user-edit")
 	public ModelAndView afficheEditUser(@RequestParam Integer id) {
 		ModelAndView mav = new ModelAndView();
-		User user= sUser.getById(id).get();
+		User user = sUser.getById(id).get();
 		mav.setViewName("userEdit");
 		mav.addObject("editedUser", user);
 		return mav;
 	}
-	
+
 	@PostMapping("/user-edit")
-	public ModelAndView editUser(@Validated @ModelAttribute("editedUser") User user,
-			BindingResult bindingResult) {
+	public ModelAndView editUser(@Validated @ModelAttribute("editedUser") User user, BindingResult bindingResult) {
 		if (bindingResult.hasErrors()) {
 			ModelAndView mav = new ModelAndView();
 			mav.setViewName("redirect:/users"); // nom de la vue (page html)
@@ -61,6 +60,25 @@ public class UserController {
 		System.out.println(user.toString());
 		mav.setViewName("redirect:/users"); // nom de la vue (page html)
 		mav.addObject("editedUser", user); // nom du mlodel attribute et valeur de l'object
+		return mav;
+	}
+
+	@PostMapping("/user-create")
+	public ModelAndView saveUser(@Validated @ModelAttribute("savedUser") User user, BindingResult bindingResult) {
+		if (bindingResult.hasErrors()) {
+			ModelAndView mav = new ModelAndView();
+			mav.setViewName("redirect:/users");
+			mav.addObject("savedUser", user);
+			System.out.println("Erreur d'user, non enregistré !");
+			System.out.println(bindingResult);
+			mav.addObject("errorString", "Erreur lors de la création de l'user");
+			return mav;
+		}
+		ModelAndView mav = new ModelAndView();
+		sUser.save(user);
+		System.out.println(user.toString());
+		mav.setViewName("redirect:/users"); // nom de la vue (page html)
+		mav.addObject("savedUser", user); // nom du mlodel attribute et valeur de l'object
 		return mav;
 	}
 }
