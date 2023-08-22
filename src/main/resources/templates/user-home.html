@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Titre</title>
+</head>
+<body>
+	<h1>Liste des utilisateurs</h1>
+
+	<table>
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>E-mail</th>
+				<th>Mot de passe</th>
+				<th>Numero de connexion</th>
+			</tr>
+		</thead>
+		<tbody th:each="userTemp : ${userList}">
+			<tr>
+				<td th:text="${userTemp.id}"></td>
+				<td th:text="${userTemp.login}"></td>
+				<td th:text="${userTemp.password}"></td>
+				<td th:text="${userTemp.connectionNumber}"></td>
+				<td><a th:href="@{/user(id=${userTemp.id})}">Modifier</a></td>
+				<td><a th:href="@{/user-delete(id=${userTemp.id})}">Supprimer</a></td>
+			</tr>
+		</tbody>
+	</table>
+	
+	<p th:if="${userList.size &lt; 1}">Aucun utilisateur trouvé</p>
+	
+	<a href="./user-create">Creer</a>
+	
+	<form method="get" action="./users">
+		<input type="text" name="search">
+		<input type="submit" value="Rechercher">
+	</form>
+</body>
+</html>

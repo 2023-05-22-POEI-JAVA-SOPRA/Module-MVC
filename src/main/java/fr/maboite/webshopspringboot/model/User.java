@@ -1,5 +1,7 @@
 package fr.maboite.webshopspringboot.model;
 
+import java.util.Objects;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -11,19 +13,28 @@ import jakarta.persistence.Table;
 @Entity @Table(name = "users")
 public class User {
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_user")
 	private Integer id;
 	private String login;
 	private String password;
 	@Column(name = "connection_number")
-	private int connectionNumber;
+	private Integer connectionNumber;
 
 	
 	public User() {
 		super();
 	}
 	
-	public User(String login, String password, int connectionNumber) {
+	public User(String login, String password, Integer connectionNumber) {
 		super();
+		this.login = login;
+		this.password = password;
+		this.connectionNumber = connectionNumber;
+	}
+
+	public User(Integer id, String login, String password, Integer connectionNumber) {
+		super();
+		this.id = id;
 		this.login = login;
 		this.password = password;
 		this.connectionNumber = connectionNumber;
@@ -44,7 +55,7 @@ public class User {
 	}
 
 
-	public int getConnectionNumber() {
+	public Integer getConnectionNumber() {
 		return connectionNumber;
 	}
 
@@ -73,4 +84,17 @@ public class User {
 		return "User [id=" + id + ", login=" + login + ", password=" + password + ", connectionNumber="
 				+ connectionNumber + "]";
 	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		User other = (User) obj;
+		return connectionNumber == other.connectionNumber && Objects.equals(id, other.id)
+				&& Objects.equals(login, other.login) && Objects.equals(password, other.password);
+	}  
 }

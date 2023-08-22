@@ -24,13 +24,6 @@ public class WebshopSpringbootApplication implements CommandLineRunner{
 
 	@Override
     public void run(String...args) throws Exception {
-
-    	UserService us = applicationContext.getBean(UserService.class);
-    	
-    	Iterable<User> all = us.getAll();
-		for (User user : all) {
-			System.out.println(user);
-		}
     }
 
 }
