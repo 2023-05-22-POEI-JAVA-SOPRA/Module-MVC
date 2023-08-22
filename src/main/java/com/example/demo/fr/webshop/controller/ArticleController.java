@@ -19,25 +19,19 @@ public class ArticleController {
 
 	
 	@GetMapping(path = {"/articles", "/articles.html"})
-	public ModelAndView afficheArticles() {
+	public ModelAndView afficheArticles(@RequestParam(value = "partialDescription", required = false) String partialDescription) {
 		 System.out.println("J'affiche la page articles");
 
 		 ModelAndView mav = new ModelAndView();
 		 mav.setViewName("/articles");
-		 mav.addObject("articles", articleService.getAll());
 		 
-		 return mav;
-	}
-	
-	
-	@GetMapping("/articles/find")
-	public ModelAndView sauvegardePlanete(@RequestParam(value = "partialDescription", required = false) String partialDescription) {
-
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("/articles");
-		mav.addObject("articles", articleService.getByDescriptionLike(partialDescription));
-
-		return mav;
+		 if(partialDescription == null) {
+			 mav.addObject("articles", articleService.getAll());
+			 return mav;
+		 } else {
+			mav.addObject("articles", articleService.getByDescriptionLike(partialDescription));
+			return mav;
+		 }
 	}
 	
 	
