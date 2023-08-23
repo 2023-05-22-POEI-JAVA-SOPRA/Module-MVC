@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-<<<<<<< HEAD
-	<name>Module-MVC</name>
-=======
-	<name>SpringMVC_Webshop</name>
->>>>>>> ec66fbcce9d1601f9f659cbda6b745d83ec73a3e
+	<name>0_montrerapapa</name>
 	<comment></comment>
 	<projects>
 	</projects>
@@ -16,11 +12,6 @@
 		</buildCommand>
 		<buildCommand>
 			<name>org.eclipse.jdt.core.javabuilder</name>
-			<arguments>
-			</arguments>
-		</buildCommand>
-		<buildCommand>
-			<name>org.eclipse.wst.validation.validationbuilder</name>
 			<arguments>
 			</arguments>
 		</buildCommand>
