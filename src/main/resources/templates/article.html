@@ -1,23 +1,81 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org/" >
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Mes articles BABIBU</title>
-</head>
-<body>
-	
-	
-<h1>Mes articles :</h1>
+<html xmlns:th="http://www.thymeleaf.org/">
 
-	<ul>
-		<li th:each="article:${maListeArticle}" 
-		><a href="article.html" 
-		
-		th:text="${article.brand}"
-		>no article name</a></li>
-		<!--Le th:href qui casse tout, je n'arrive pas a faire la suite-->
-		<!--th:href="@{/planetes/(id=${planetTemp.id})}"-->
-	</ul>
+<head>
+    <title>Mes articles</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+</head>
+
+<body class="bg-dark container mt-5">
+	
+	<nav class="navbar navbar-expand-lg bg-body-tertiary">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="/home">WebShop</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+				aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+				<div class="navbar-nav">
+					<a class="nav-link" aria-current="page" href="/home">Accueil</a>
+					<a class="nav-link" href="/users">Liste des utilisateurs</a>
+					<a class="nav-link" href="/roles">Liste des rôles</a>
+					<a class="nav-link active" href="/articles">Liste des articles</a>
+				</div>
+			</div>
+		</div>
+	</nav>
+
+    <h1 class="text-light mb-4">Mes articles :</h1>
+
+    <div class="mb-3">
+        <form method="GET" action="/articles?recherche=">
+            <input id="recherche" name="recherche" type="text" class="form-control" placeholder="Rechercher" />
+            <input for="Rechercher" type="submit" class="btn btn-primary mt-2" value="Rechercher" />
+        </form>
+    </div>
+
+    <div>
+        <table class="table table-bordered table-dark">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Description</th>
+                    <th>Brand</th>
+                    <th>Price</th>
+                    <th>Suppr</th>
+                    <th>Modifier</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="article:${maListeArticle}">
+                    <td th:text="${article.idArticle}"></td>
+                    <td th:text="${article.description}"></td>
+                    <td th:text="${article.brand}"></td>
+                    <td th:text="${article.price}"></td>
+                    <td class="text-center">
+                        <form th:action="@{/delete-article}" th:method="post">
+                            <input type="hidden" name="id" th:value="${article.idArticle}" />
+                            <button type="submit" class="btn btn-danger">Supprimer</button>
+                        </form>
+                    </td>
+                    <td class="text-center">
+                        <a th:href="@{/article-edit(id=${article.idArticle})}" class="btn btn-primary">Modifier</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2 class="text-light mt-4">Créer un article :</h2>
+        <div>
+            <p><a th:href="@{/article-create}" class="btn btn-success">Créer un nouvel article</a></p>
+        </div>
+    </div>
+
 </body>
+
 </html>

@@ -7,6 +7,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
 
 @Entity
@@ -18,7 +19,7 @@ public class Article {
 	private Integer idArticle;
 	
 	// VERIFIER SI CONFLITS AVEC REGLES BDD
-	@Size(max=30, message="La description doit faire 30 caracteres max")
+	@Size(min=3,max=30, message="La description doit faire 3 caractères min et 30 caracteres max")
 	@NotNull
 	private String description;
 	
@@ -27,7 +28,7 @@ public class Article {
 	private String brand;
 
 	@Column(name="unitaryPrice")
-	@NotNull
+	@Positive(message="Le prix ne peut pas être négatif ou nul")
 	private Float price;
 	
 	private static final Double maxPrice = 500.00;
@@ -66,6 +67,12 @@ public class Article {
 
 	public void setPrice(float price) {
 		this.price = price;
+	}
+
+	@Override
+	public String toString() {
+		return "Article [idArticle=" + idArticle + ", description=" + description + ", brand=" + brand + ", price="
+				+ price + "]";
 	}
 
 }
