@@ -19,6 +19,10 @@ public class serviceUser {
 		return this.monUserDao.findAll();
 	}
 
+	/**
+	 * @param login
+	 * @return
+	 */
 	public List<User> getByLoginContainingIgnoreCase(String login) {
 		if (login == null) {
 			return getAll();
@@ -26,14 +30,25 @@ public class serviceUser {
 		return this.monUserDao.findByLoginContainingIgnoreCase(login);
 	}
 
+	/**
+	 * @param id
+	 * @return
+	 */
 	public Optional<User> getById(Integer id) {
 		return this.monUserDao.findById(id);
 	}
 
+	/**
+	 * @param user
+	 * @return
+	 */
 	public User save(User user) {
 		return this.monUserDao.save(user);
 	}
 
+	/**
+	 * @param id
+	 */
 	public void deleteById(Integer id) {
 		this.monUserDao.deleteById(id);
 	}

@@ -19,6 +19,10 @@ public class RoleController {
 	@Autowired
 	private serviceRole sRole;
 	
+	/**
+	 * @param descr
+	 * @return
+	 */
 	@GetMapping(path = "/roles")
 	public ModelAndView searchRoles(@RequestParam(name="recherche",required=false)String descr) {
 		System.out.println("Méthode sur /roles appelée");
@@ -37,6 +41,10 @@ public class RoleController {
 		}
 	}
 	
+	/**
+	 * @param id
+	 * @return
+	 */
 	@PostMapping("/delete-role")
 	public String deleteRole(Integer id) {
 		sRole.deleteById(id);
@@ -46,6 +54,10 @@ public class RoleController {
 	
 	// PAGE EDIT ROLE
 	
+	/**
+	 * @param id
+	 * @return
+	 */
 	@GetMapping("/role-edit")
 	public ModelAndView afficheEditRole(@RequestParam Integer id) {
 		ModelAndView mav = new ModelAndView();
@@ -55,6 +67,11 @@ public class RoleController {
 		return mav;
 	}
 	
+	/**
+	 * @param role
+	 * @param bindingResult
+	 * @return
+	 */
 	@PostMapping("/role-edit")
 	public ModelAndView editRole(@Validated @ModelAttribute("editedRole") Role role,
 			BindingResult bindingResult) {
@@ -74,6 +91,9 @@ public class RoleController {
 		return mav;
 	}
 	
+	/**
+	 * @return
+	 */
 	@GetMapping("/role-create")
 	public ModelAndView afficheCreateRole() {
 		ModelAndView mav = new ModelAndView();
@@ -84,6 +104,11 @@ public class RoleController {
 	}
 	
 	// PAGE CREATE ROLE
+	/**
+	 * @param newRole
+	 * @param bindingResult
+	 * @return
+	 */
 	@PostMapping("/role-create")
 	public ModelAndView createRole(@Validated @ModelAttribute("createRole") Role newRole
 			,BindingResult bindingResult) {

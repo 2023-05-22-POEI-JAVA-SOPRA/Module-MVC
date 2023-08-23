@@ -33,22 +33,37 @@ public class Article {
 	
 	private static final Double maxPrice = 500.00;
 
+	/**
+	 * @return
+	 */
 	public static Double getMaxprice() {
 		return maxPrice;
 	}
 
+	/**
+	 * @return
+	 */
 	public Integer getIdArticle() {
 		return idArticle;
 	}
 
+	/**
+	 * @param idArticle
+	 */
 	public void setIdArticle(Integer idArticle) {
 		this.idArticle = idArticle;
 	}
 
+	/**
+	 * @return
+	 */
 	public String getDescription() {
 		return description;
 	}
 
+	/**
+	 * @param description
+	 */
 	public void setDescription(String description) {
 		this.description = description;
 	}
@@ -57,14 +72,23 @@ public class Article {
 		return brand;
 	}
 
+	/**
+	 * @param brand
+	 */
 	public void setBrand(String brand) {
 		this.brand = brand;
 	}
 
+	/**
+	 * @return
+	 */
 	public Float getPrice() {
 		return price;
 	}
 
+	/**
+	 * @param price
+	 */
 	public void setPrice(float price) {
 		this.price = price;
 	}

@@ -20,6 +20,10 @@ public class UserController {
 	private serviceUser sUser;
 
 //méthode permettant de gérer à la fois l'affichage de toute la liste et la recherche par login
+	/**
+	 * @param login
+	 * @return
+	 */
 	@GetMapping("/users")
 	public ModelAndView searchUser(@RequestParam(name = "login", required = false) String login) {
 		ModelAndView mav = new ModelAndView();
@@ -28,6 +32,10 @@ public class UserController {
 		return mav;
 	}
 
+	/**
+	 * @param id
+	 * @return
+	 */
 	@PostMapping("/delete-user")
 	public String deleteUser(Integer id) {
 		sUser.deleteById(id);
@@ -35,6 +43,10 @@ public class UserController {
 		return "redirect:/users"; // Redirection sur la page de base
 	}
 
+	/**
+	 * @param id
+	 * @return
+	 */
 	@GetMapping({ "/user-edit", "/user-create" })
 	public ModelAndView afficheUserForm(@RequestParam(required = false) Integer id) {
 		ModelAndView mav = new ModelAndView("userForm");
@@ -54,6 +66,11 @@ public class UserController {
 		return mav;
 	}
 
+	/**
+	 * @param user
+	 * @param bindingResult
+	 * @return
+	 */
 	@PostMapping({ "/user-edit", "/user-create" })
 	public ModelAndView saveUser(@Validated @ModelAttribute("user") User user, BindingResult bindingResult) {
 		ModelAndView mav = new ModelAndView();

@@ -26,18 +26,30 @@ public class Role {
 	@Column(name = "roleName")
 	private String name;
 
+	/**
+	 * @return
+	 */
 	public Integer getIdRole() {
 		return idRole;
 	}
 
+	/**
+	 * @param idRole
+	 */
 	public void setIdRole(Integer idRole) {
 		this.idRole = idRole;
 	}
 
+	/**
+	 * @return
+	 */
 	public String getName() {
 		return name;
 	}
 
+	/**
+	 * @param name
+	 */
 	public void setName(String name) {
 		this.name = name;
 	}

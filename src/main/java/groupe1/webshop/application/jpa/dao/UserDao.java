@@ -9,7 +9,14 @@ import groupe1.webshop.application.jpa.entity.User;
 
 @Repository
 public interface UserDao extends CrudRepository<User,Integer>{
+	/**
+	 *
+	 */
 	List<User> findAll();
 
+	/**
+	 * @param login
+	 * @return
+	 */
 	List<User> findByLoginContainingIgnoreCase(String login);
 }

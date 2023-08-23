@@ -24,28 +24,53 @@ public class serviceArticle {
 	/*
 	 * si descr == null afficher tout les éléments cf. articleController
 	 */
+	/**
+	 * @param descr
+	 * @return
+	 */
 	public Iterable<Article> getByDescr(String descr){
 		//System.out.println(descr);
 		return this.monArticleDao.findByDescriptionContainingIgnoreCase(descr);			
 	}
 	
+	/**
+	 * @param id
+	 * @return
+	 */
 	public Optional<Article> getById(Integer id) {
 		return this.monArticleDao.findById(id);
 	}
 	
+	/**
+	 * @param id
+	 */
 	public void deleteById(Integer id) {
 		this.monArticleDao.deleteById(id);
 	}
 	
 	//A supprimer
+	/**
+	 * @param description
+	 * @return
+	 */
 	public List<Article> getByDescriptionContainingIgnoreCase(String description){
 		return this.monArticleDao.findByDescriptionContainingIgnoreCase(description);
 	}
 	
+	/**
+	 * @param marque
+	 * @param prixMin
+	 * @param prixMax
+	 * @return
+	 */
 	public List<Article> getByBrandAndPrixRange(String marque, float prixMin, float prixMax){
 		return this.monArticleDao.findByMarqueAndPrixRange(marque, prixMin, prixMax);
 	}
 	
+	/**
+	 * @param article
+	 * @return
+	 */
 	public Article save(Article article) {
 		return this.monArticleDao.save(article);
 	}

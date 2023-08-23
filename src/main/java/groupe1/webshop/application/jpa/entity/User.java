@@ -36,10 +36,16 @@ public class User {
 	@Positive(message="Le numéro de connexion doit être strictement positif")
 	private Integer connectionNumber;
 
+	/**
+	 * @return
+	 */
 	public Integer getIdUser() {
 		return idUser;
 	}
 
+	/**
+	 * @param idUser
+	 */
 	public void setIdUser(Integer idUser) {
 		this.idUser = idUser;
 	}
@@ -48,14 +54,23 @@ public class User {
 		return login;
 	}
 
+	/**
+	 * @param login
+	 */
 	public void setLogin(String login) {
 		this.login = login;
 	}
 
+	/**
+	 * @return
+	 */
 	public String getPassword() {
 		return password;
 	}
 
+	/**
+	 * @param password
+	 */
 	public void setPassword(String password) {
 		this.password = password;
 	}
@@ -64,6 +79,9 @@ public class User {
 		return connectionNumber;
 	}
 
+	/**
+	 * @param connectionNumber
+	 */
 	public void setConnectionNumber(Integer connectionNumber) {
 		this.connectionNumber = connectionNumber;
 	}

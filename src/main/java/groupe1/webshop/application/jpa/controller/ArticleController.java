@@ -20,6 +20,10 @@ public class ArticleController {
 	private serviceArticle artServ;
 
 	// PAGE article.html
+	/**
+	 * @param descr
+	 * @return
+	 */
 	@GetMapping(path = "/articles")
 	public ModelAndView searchArticles(@RequestParam(name="recherche",required=false)String descr) {
 		System.out.println("Méthode sur /articles appelée");
@@ -39,6 +43,10 @@ public class ArticleController {
 	}
 	
 
+	/**
+	 * @param id
+	 * @return
+	 */
 	@PostMapping("/delete-article")
 	public String deleteArticle(Integer id) {
 		artServ.deleteById(id);
@@ -57,6 +65,11 @@ public class ArticleController {
 		return mav;
 	}
 	
+	/**
+	 * @param article
+	 * @param bindingResult
+	 * @return
+	 */
 	@PostMapping("/article-edit")
 	public ModelAndView editArticle(@Validated @ModelAttribute("editedArticle") Article article,
 			BindingResult bindingResult) {
@@ -76,6 +89,9 @@ public class ArticleController {
 		return mav;
 	}
 	
+	/**
+	 * @return
+	 */
 	@GetMapping("/article-create")
 	public ModelAndView afficheCreateArticle() {
 		ModelAndView mav = new ModelAndView();
@@ -86,6 +102,11 @@ public class ArticleController {
 	}
 	
 	// PAGE CREATE ARTICLE
+	/**
+	 * @param newArticle
+	 * @param bindingResult
+	 * @return
+	 */
 	@PostMapping("/article-create")
 	public ModelAndView createArticle(@Validated @ModelAttribute("createArticle") Article newArticle
 			,BindingResult bindingResult) {
