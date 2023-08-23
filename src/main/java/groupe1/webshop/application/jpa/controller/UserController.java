@@ -16,18 +16,31 @@ import groupe1.webshop.application.jpa.service.serviceUser;
 @Controller
 public class UserController {
 
+	/**
+	 * Le service User est lié au controlleur
+	 */
 	@Autowired
 	private serviceUser sUser;
 
-//méthode permettant de gérer à la fois l'affichage de toute la liste et la recherche par login
+	/**
+	 * méthode permettant de gérer à la fois l'affichage de toute la liste et la recherche par login
+	 * @param login
+	 * @return
+	 */
 	@GetMapping("/users")
 	public ModelAndView searchUser(@RequestParam(name = "login", required = false) String login) {
+
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("user");
 		mav.addObject("users", sUser.getByLoginContainingIgnoreCase(login));
 		return mav;
 	}
 
+	/**
+	 * Suppression d'un utilisateur
+	 * @param id
+	 * @return
+	 */
 	@PostMapping("/delete-user")
 	public String deleteUser(Integer id) {
 		sUser.deleteById(id);
@@ -35,6 +48,11 @@ public class UserController {
 		return "redirect:/users"; // Redirection sur la page de base
 	}
 
+	/**
+	 * Afficher les formulaires de création ou de modification en fonction de l'état d'un booléen EditMode
+	 * @param id
+	 * @return
+	 */
 	@GetMapping({ "/user-edit", "/user-create" })
 	public ModelAndView afficheUserForm(@RequestParam(required = false) Integer id) {
 		ModelAndView mav = new ModelAndView("userForm");
@@ -54,6 +72,12 @@ public class UserController {
 		return mav;
 	}
 
+	/**
+	 * Sauvegarder les modifications ou création d'utilisateur
+	 * @param user
+	 * @param bindingResult
+	 * @return ModelAndView
+	 */
 	@PostMapping({ "/user-edit", "/user-create" })
 	public ModelAndView saveUser(@Validated @ModelAttribute("user") User user, BindingResult bindingResult) {
 		ModelAndView mav = new ModelAndView();
